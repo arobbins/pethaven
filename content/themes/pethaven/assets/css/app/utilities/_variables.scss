@@ -1,0 +1,85 @@
+//
+// Grid
+//
+$container-width: 1000px;
+$gutter-width: 35px;
+
+$cols-1: 1;
+$cols-2: 2;
+$cols-3: 3;
+$cols-4: 4;
+$cols-5: 5;
+$cols-6: 6;
+$cols-7: 7;
+
+//
+// Breakpoints
+//
+$breakpoints: (
+  400: 400px,
+  500: 500px,
+  600: 600px,
+  700: 700px,
+  800: 800px,
+  900: 900px,
+  1000: 1000px,
+  1100: 1100px,
+  1200: 1200px,
+  1300: 1300px
+);
+
+
+//
+// Colors
+//
+$colors: (
+  primary: #104c62,
+  secondary: #88c9d1,
+  highlight: #f46b25,
+  grey: #e2e2e2,
+  greyDark: #a4a3a3,
+  base: #666666
+);
+
+
+//
+// Typography
+//
+@font-face {
+  font-family: 'museo700';
+  src: url('../fonts/Museo700-Regular-webfont.eot');
+  src: url('../fonts/Museo700-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Museo700-Regular-webfont.woff2') format('woff2'),
+       url('../fonts/Museo700-Regular-webfont.woff') format('woff'),
+       url('../fonts/Museo700-Regular-webfont.ttf') format('truetype'),
+       url('../fonts/Museo700-Regular-webfont.svg#museo700') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+$font-primary-fallbacks: Helvetica, Arial, sans-serif;
+
+$font-primary: 'museo700', $font-primary-fallbacks;
+$font-secondary: 'Raleway', $font-primary-fallbacks;
+
+$font-base:   17px;
+
+$font-xs:     26px;
+$font-s:      32px;
+$font-m:      40px;
+$font-l:      50px;
+$font-xl:     58px;
+
+$btn-s:       22px;
+$btn-l:       32px;
+
+
+//
+// Gutters / Spacing
+//
+$space-xs:    5px;
+$space-s:     10px;
+$space-m:     20px;
+$space-l:     30px;
+$space-xl:    40px;

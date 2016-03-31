@@ -1,0 +1,135 @@
+//
+// Misc / Global
+//
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.4;
+  font-size: $font-base;
+  font-family: helvetica, arial;
+  color: color(base);
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.animated {
+    animation-duration: 0.3s;
+  }
+
+  @include respond-to(600, 'max') {
+    // font-size: ($font-base - 2px);
+  }
+}
+
+::selection {
+  background-color: color(primary);
+  color: white;
+}
+
+code, kbd, pre, samp {
+  border-radius: rem($space-s / 2);
+}
+
+ul, ol, dl {
+  padding-left: 10px;
+  margin: rem($space-s) 0 rem($space-s) rem($space-s);
+}
+
+
+//
+// Typography
+//
+a {
+  color: color(secondary);
+
+  &:hover {
+    color: lighten(color(secondary), 10);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  line-height: 1.2;
+  color: color(primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  a {
+    text-decoration: none;
+  }
+
+  + p {
+    margin-top: 0.5em;
+  }
+
+}
+
+h1 {
+  font-weight: bold;
+  font-size: rem($font-xl);
+  margin: 0 0 rem(10px) 0;
+
+  @include respond-to(600, 'max') {
+    font-size: rem($font-l);
+  }
+}
+
+h2 {
+  font-weight: bold;
+  font-size: rem($font-l);
+  margin: 1em 0 rem(10px) 0;
+
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  @include respond-to(400, 'max') {
+    font-size: rem(32px);
+  }
+}
+
+h3 {
+  margin: 1em 0 rem(10px) 0;
+  font-size: rem($font-m);
+  font-weight: bold;
+}
+
+h4 {
+  width: 100%;
+  margin: 0 0 1em 0;
+  font-size: rem($font-m);
+  font-family: $font-secondary;
+}
+
+em, i {
+  font-style: italic;
+}
+
+blockquote {
+  padding: 0 0 0 rem(35px);
+  font-style: italic;
+  margin: 2.5em 0 2.5em 1.5em;
+  position: relative;
+  width: 120%;
+  left: -14%;
+  font-size: rem($font-m);
+
+  @include respond-to(500, 'max') {
+    margin-left: 0;
+  }
+}

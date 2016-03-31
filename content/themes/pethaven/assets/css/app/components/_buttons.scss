@@ -1,0 +1,33 @@
+.btn {
+  color: white;
+  border: 2px solid white;
+  padding: 0.1em 1.1em;
+  font-size: $font-s;
+  background-color: color(secondary);
+  font-family: $font-secondary;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: lighten(color(secondary), 50);
+  }
+}
+
+//
+// Needed because WordPress wraps span tags around an anchor
+//
+span.btn {
+  padding: 0;
+  display: inline-block;
+
+  a {
+    padding: 0.1em 1.1em;
+    color: white;
+    text-decoration: none;
+    border: none;
+    display: inline-block;
+
+    &:hover {
+      color: color(secondary);
+    }
+  }
+}

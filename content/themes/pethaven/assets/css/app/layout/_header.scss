@@ -1,0 +1,54 @@
+.header {
+  height: 100%;
+  width: $container-width;
+  @extend .pattern-wood;
+
+  @include respond-to(800, 'max') {
+    width: 200px;
+  }
+
+  @include respond-to(500, 'max') {
+    width: 100%;
+    flex-direction: row;
+    background-image: none;
+    justify-content: space-between;
+    padding: 0 1em;
+    height: 100px;
+  }
+}
+
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+
+  @include respond-to(1100, 'max') {
+    height: 100%;
+    position: absolute;
+  }
+
+  @include respond-to(800, 'max') {
+    width: 200px;
+    height: 100%;
+    position: absolute;
+  }
+
+  @include respond-to(500, 'max') {
+    position: static;
+    height: auto;
+    width: 100%;
+    @extend .pattern-wood;
+  }
+}
+
+.header-footer {
+  @include respond-to(500, 'max') {
+    display: none;
+  }
+}
+
+
+.header-mobile-icon {
+  @include mobile-menu-icon;
+}

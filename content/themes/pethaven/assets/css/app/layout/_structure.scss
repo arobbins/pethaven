@@ -1,0 +1,60 @@
+.wrapper {
+  height: 100%;
+  z-index: 1;
+
+  @include respond-to(1100, 'max') {
+    position: relative;
+  }
+
+  @include respond-to(500, 'max') {
+    flex-direction: column;
+  }
+}
+
+.logo-mark {
+  width: 55%;
+  display: block;
+  margin: rem($space-l) 0;
+
+  @include respond-to(500, 'max') {
+    width: 80px;
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.main {
+  min-height: 100vh;
+  width: $container-width;
+  min-width: 500px;
+  padding: 2em 1.5em 1.5em;
+  
+  img {
+    width: 100%;
+  }
+
+  @include respond-to(1100, 'max') {
+    width: calc(100% - #{$container-width});
+    min-width: auto;
+    transform: translateX($container-width);
+  }
+
+  @include respond-to(800, 'max') {
+    width: calc(100% - #{$container-width});
+    transform: translateX($container-width);
+  }
+
+  @include respond-to(500, 'max') {
+    width:  100%;
+    min-width: 100%;
+    transform: none;
+    flex: 1;
+  }
+}
+
+.home .main {
+  background: transparent;
+}
