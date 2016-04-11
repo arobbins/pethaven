@@ -1,1 +1,38 @@
-.widget {}
+.widget {
+  margin-bottom: 2em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+    font-size: $widget;
+    text-transform: capitalize;
+  }
+
+  .menu-item a:not(.btn) {
+    padding-left: 0;
+    width: 100%;
+    display: block;
+    color: color(highlight);
+  }
+
+  .menu-item a:not(.btn) {
+    padding: 0.4em 1em 0.4em 0;
+  }
+
+}
+
+.widget-social {
+  .textwidget {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.sidebar .widget h3 {
+  background-color: color(secondary);
+  padding: 0.6em 0.8em;
+  color: white;
+}

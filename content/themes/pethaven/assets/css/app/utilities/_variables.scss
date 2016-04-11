@@ -1,7 +1,7 @@
 //
 // Grid
 //
-$container-width: 1000px;
+$container-width: 1100px;
 $gutter-width: 35px;
 
 $cols-1: 1;
@@ -28,7 +28,6 @@ $breakpoints: (
   1300: 1300px
 );
 
-
 //
 // Colors
 //
@@ -36,11 +35,10 @@ $colors: (
   primary: #104c62,
   secondary: #88c9d1,
   highlight: #f46b25,
-  grey: #e2e2e2,
-  greyDark: #a4a3a3,
+  greyLight: #e2e2e2,
+  grey: #a4a3a3,
   base: #666666
 );
-
 
 //
 // Typography
@@ -63,17 +61,18 @@ $font-primary-fallbacks: Helvetica, Arial, sans-serif;
 $font-primary: 'museo700', $font-primary-fallbacks;
 $font-secondary: 'Raleway', $font-primary-fallbacks;
 
-$font-base:   17px;
+$font-base:   16px;
 
-$font-xs:     26px;
-$font-s:      32px;
-$font-m:      40px;
-$font-l:      50px;
-$font-xl:     58px;
+$font-xs:     16px;
+$font-s:      26px;
+$font-m:      28px;
+$font-l:      36px;
+$font-xl:     42px;
 
-$btn-s:       22px;
-$btn-l:       32px;
+$btn-s:       16px;
+$btn-l:       20px;
 
+$widget:      20px;
 
 //
 // Gutters / Spacing

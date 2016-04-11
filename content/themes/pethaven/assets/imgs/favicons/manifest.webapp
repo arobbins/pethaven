@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "name": "The Lodge Sasquatch Kitchen",
-  "description": "The Lodge Sasquatch Kitchen",
+  "name": "Pet Haven",
+  "description": "Pet Haven",
   "icons": {
-    "60": "firefox_app_60x60.png",
-    "128": "firefox_app_128x128.png",
-    "512": "firefox_app_512x512.png"
+    "60": "assets/imgs/favicons/**/*/firefox_app_60x60.png",
+    "128": "assets/imgs/favicons/**/*/firefox_app_128x128.png",
+    "512": "assets/imgs/favicons/**/*/firefox_app_512x512.png"
   },
   "developer": {
-    "name": "The Lodge Sasquatch Kitchen",
-    "url": "http://thelodgetempe.com"
+    "name": "Pet Haven",
+    "url": "http://www.pethavenmn.org"
   }
 }

@@ -2,11 +2,7 @@
 
   var Utils = (function() {
 
-    var $body = $('body');
-
-    var test = function() {
-
-    };
+    var test = function() {};
 
     return {
       test: test

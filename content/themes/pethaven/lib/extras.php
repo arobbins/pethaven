@@ -31,3 +31,17 @@ function excerpt_more() {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
+
+
+/*
+
+ Social icons shortcode
+
+*/
+function social($atts) {
+  ob_start();
+  include(locate_template('components/social/view.php'));
+  $content = ob_get_clean();
+  return $content;
+}
+add_shortcode('social', __NAMESPACE__ . '\\social');

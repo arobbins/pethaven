@@ -16,6 +16,11 @@ const config = {
     css: './assets/css/**/*.scss',
     cssEntry: './assets/css/app/app.scss'
   },
+  favicon: {
+    entry: './assets/imgs/favicons/favicon.png',
+    dest: './assets/imgs/favicons',
+    all: './assets/imgs/favicons/**/*'
+  },
   folders: {
     css: './assets/css',
     js: './assets/js'
@@ -26,7 +31,8 @@ const config = {
     css: 'app.min.css'
   },
   libs: [
-    'jquery'
+    'jquery',
+    'slick-carousel'
   ],
   bs: browserSync.create(),
   serverName: "pethaven.dev"

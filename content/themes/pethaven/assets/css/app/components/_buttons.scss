@@ -1,33 +1,20 @@
-.btn {
+.btn,
+span.btn {
   color: white;
-  border: 2px solid white;
-  padding: 0.1em 1.1em;
-  font-size: $font-s;
-  background-color: color(secondary);
-  font-family: $font-secondary;
+  padding: rem($space-s) rem($space-m);
+  font-size: $btn-s;
+  background-color: color(highlight);
+  font-family: $font-primary;
   text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid color(highlight);
 
   &:hover {
-    background-color: lighten(color(secondary), 50);
+    background-color: transparent;
+    color: color(highlight);
   }
 }
 
-//
-// Needed because WordPress wraps span tags around an anchor
-//
-span.btn {
-  padding: 0;
-  display: inline-block;
-
-  a {
-    padding: 0.1em 1.1em;
-    color: white;
-    text-decoration: none;
-    border: none;
-    display: inline-block;
-
-    &:hover {
-      color: color(secondary);
-    }
-  }
+.btn-large {
+  font-size: $btn-l;
 }

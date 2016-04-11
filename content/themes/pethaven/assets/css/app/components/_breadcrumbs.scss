@@ -1,3 +1,21 @@
+.breadcrumbs {
+  background-color: color(greyLight);
+  width: 100%;
+  font-family: $font-primary;
+  font-size: $font-xs;
+}
+
+.error404 .breadcrumbs {
+  display: none;
+}
+
 #breadcrumbs {
-  margin-top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home .breadcrumbs,
+.content .breadcrumbs {
+  display: none;
 }

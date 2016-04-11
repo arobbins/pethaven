@@ -161,7 +161,15 @@
 
 
 //
-// Row aignment
+// General Alignment
+//
+.l-center-self {
+  align-self: center;
+}
+
+
+//
+// Row Alignment
 //
 .l-row-right {
   justify-content: flex-end;
@@ -186,7 +194,7 @@
 
 
 //
-// Col alignment
+// Col Alignment
 //
 .l-col-reverse {
   flex-direction: column-reverse;
@@ -207,4 +215,8 @@
 
 .l-contained {
   flex: none;
+}
+
+.l-contain {
+  width: $container-width;
 }

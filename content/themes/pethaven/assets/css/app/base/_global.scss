@@ -53,10 +53,10 @@ ul, ol, dl {
 // Typography
 //
 a {
-  color: color(secondary);
+  color: color(highlight);
 
   &:hover {
-    color: lighten(color(secondary), 10);
+    color: lighten(color(highlight), 20);
   }
 }
 
@@ -64,8 +64,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $font-primary;
   line-height: 1.2;
   color: color(primary);
-  letter-spacing: 2px;
-  text-transform: uppercase;
 
   a {
     text-decoration: none;
@@ -132,4 +130,19 @@ blockquote {
   @include respond-to(500, 'max') {
     margin-left: 0;
   }
+}
+
+.logo {
+  margin-left: 0;
+  padding-left: 0;
+
+  @include dim;
+
+  img {
+    max-width: 85%;
+  }
+}
+
+.header .logo {
+  margin-left: 0;
 }

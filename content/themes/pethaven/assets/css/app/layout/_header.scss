@@ -1,54 +1,42 @@
 .header {
-  height: 100%;
-  width: $container-width;
-  @extend .pattern-wood;
+  padding: 2em 0 1em;
 
-  @include respond-to(800, 'max') {
-    width: 200px;
-  }
-
-  @include respond-to(500, 'max') {
-    width: 100%;
-    flex-direction: row;
-    background-image: none;
-    justify-content: space-between;
-    padding: 0 1em;
-    height: 100px;
-  }
+  @include respond-to(800, 'max') {}
+  @include respond-to(500, 'max') {}
 }
 
 .header-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
 
-  @include respond-to(1100, 'max') {
-    height: 100%;
-    position: absolute;
-  }
-
-  @include respond-to(800, 'max') {
-    width: 200px;
-    height: 100%;
-    position: absolute;
-  }
+  @include respond-to(1100, 'max') {}
+  @include respond-to(800, 'max') {}
 
   @include respond-to(500, 'max') {
-    position: static;
-    height: auto;
-    width: 100%;
     @extend .pattern-wood;
   }
 }
 
 .header-footer {
-  @include respond-to(500, 'max') {
-    display: none;
-  }
+  @include respond-to(500, 'max') {}
 }
-
 
 .header-mobile-icon {
   @include mobile-menu-icon;
+}
+
+.page-header {
+  width: 100%;
+  min-height: 300px;
+}
+
+.page-header-collapsed {
+  display: none;
+}
+
+.page-header-title {
+  margin: 0;
+  color: white;
+}
+
+.home .page-header-collapsed {
+  display: none;
 }

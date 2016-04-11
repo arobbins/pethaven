@@ -27,11 +27,9 @@
 }
 
 .main {
-  min-height: 100vh;
   width: $container-width;
-  min-width: 500px;
-  padding: 2em 1.5em 1.5em;
-  
+  padding: 2em 0;
+
   img {
     width: 100%;
   }
@@ -55,6 +53,13 @@
   }
 }
 
+.content {
+  p:first-of-type {
+    margin-top: 0;
+  }
+}
+
 .home .main {
   background: transparent;
+  display: none;
 }

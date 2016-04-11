@@ -1,3 +1,7 @@
 .home .page-header {
   display: none;
 }
+
+.blog .post:first-of-type .entry-title {
+  margin-top: 0;
+}

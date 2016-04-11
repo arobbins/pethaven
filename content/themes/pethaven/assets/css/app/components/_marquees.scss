@@ -1,0 +1,69 @@
+.component-marquees {
+  min-height: 500px;
+}
+
+.slick-slide {
+  min-height: 500px !important;
+}
+
+.marquee-wrapper {
+  display: flex !important;
+}
+
+.marquee-content {
+  width: 50%;
+}
+
+.marquee-heading {
+  color: white;
+  font-size: $font-xl;
+  font-weight: bold;
+}
+
+.marquee-copy {
+  color: white;
+  margin-bottom: 2em;
+}
+
+.marquee-link {}
+
+.slick-arrow {
+  display: none !important;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  list-style: none;
+  margin: 0 0 2em 0;
+  padding: 0;
+
+  li {
+    float: left;
+    padding: 0 10px;
+
+    button {
+      background-color: color(primary);
+      font-size: 0;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      padding: 0;
+    }
+
+    &.slick-active {
+      button {
+        background-color: white;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+}

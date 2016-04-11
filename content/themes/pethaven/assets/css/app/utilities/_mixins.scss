@@ -16,6 +16,16 @@
 
 }
 
+//
+// Grid
+//
+@mixin shadow() {
+  box-shadow: 0px 7px 24px -5px rgba(0,0,0,0.75);
+}
+
+@mixin shadow-subtle() {
+  box-shadow: 0px 0px 28px -8px rgba(125,125,125,1);
+}
 
 //
 // Breakpoints
@@ -49,7 +59,6 @@
     opacity: 0.7;
   }
 }
-
 
 //
 // Mobile menu icon
@@ -109,7 +118,6 @@
     }
 
   }
-
 
   &.is-open span:nth-child(1),
   &.is-open span:nth-child(6) {

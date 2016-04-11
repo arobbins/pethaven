@@ -1,0 +1,142 @@
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-primary-wrapper {
+  width: 100%;
+
+  @include respond-to(500, 'max') {
+    display: none;
+  }
+
+}
+
+.menu-primary-wrapper-mobile {
+  display: none;
+}
+
+.nav-menu {
+  text-align: center;
+  font-family: $font-primary;
+  text-transform: uppercase;
+  font-size: $font-s;
+  color: color(primary);
+  text-decoration: none;
+  padding: 0.2em 0.8em;
+  display: block;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 2em;
+
+  @include respond-to(800, 'max') {
+    font-size: $font-xs;
+  }
+
+  &:before {
+    content: '';
+    width: 100%;
+    display: inline-block;
+    height: 16px;
+    border-top: 1px solid color(red);
+  }
+
+  &:after {
+    content: '';
+    background-image: url('../imgs/icon-dinner.svg');
+    height: 46px;
+    width: 100%;
+    display: inline-block;
+    background-size: 100% 100%;
+    margin-top: 20px;
+
+    @include respond-to(500, 'max') {
+      display: none;
+    }
+  }
+
+}
+
+.menu-primary {
+  text-align: center;
+  font-family: $font-primary;
+  list-style: none;
+
+  @include respond-to(500, 'max') {
+    margin-bottom: 2em;
+  }
+
+  li:hover > .sub-menu {
+    display: block;
+  }
+}
+
+.menu-item {
+  position: relative;
+
+  a:not(.btn) {
+    color: color(primary);
+    text-decoration: none;
+    padding: 15px 20px;
+    display: inline-block;
+    font-size: $font-xs;
+    font-family: $font-secondary;
+    // font-weight: bold;
+
+    &:hover {
+      @include dim;
+    }
+
+  }
+
+  &:last-child {
+    a:not(.btn) {
+      padding-right: 0;
+    }
+  }
+
+  @include respond-to(800, 'max') {
+    font-size: $font-xs;
+  }
+
+}
+
+.menu-primary-navigation-container {
+  margin-top: 1em;
+}
+
+.sub-menu {
+  display: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  background-color: transparentize(color(secondary), .1);
+  position: absolute;
+  left: 20px;
+  top: 50px;
+  width: 170px;
+  color: white;
+  z-index: 99999999999999999999999999999999;
+
+  @include shadow-subtle;
+
+  a:not(.btn) {
+    display: inline-block;
+    width: 100%;
+    color: white;
+
+    &:hover {
+      color: color(primary);
+    }
+  }
+
+  .menu-item {
+    border-bottom: 1px solid white;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}

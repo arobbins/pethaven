@@ -1,7 +1,10 @@
 .footer {
-  display: none;
-  padding: 1em;
-  @extend .pattern-wood;
+  background-size: cover;
+  background-position: 50% 135%;
+
+  @include respond-to(900, 'max') {
+    background-position: 2% -60px;
+  }
 
   @include respond-to(500, 'max') {
     display: flex;
@@ -9,4 +12,17 @@
     margin: 0 auto;
     width: 100%;
   }
+}
+
+.footer-content {
+  padding-top: 4em;
+  padding-bottom: 3em;
+}
+
+.footer-copyright {
+  background-color: color(primary);
+  padding: 2em 0;
+  color: white;
+  text-align: center;
+  font-size: 12px;
 }

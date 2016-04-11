@@ -1,32 +1,19 @@
-(function($) {
+import $ from 'jquery';
+import slick from 'slick-carousel';
 
-  var Vendor = (function() {
+const Vendor = (function() {
 
-    var $carousel = $('.carousel');
+  let $mqrquees = $('.component-marquees');
 
-    var initCarousel = function() {
-      $carousel.slick({
-        autoplay: true,
-        dots: true,
-        fade: true,
-        arrows: false,
-        autoplaySpeed: 5000,
-        pauseOnDotsHover: true
-      });
+  let initCarousel = function() {
+    $mqrquees.slick();
+    $mqrquees.on('breakpoint', function(event, slick, currentSlide, nextSlide){});
+  };
 
-      $carousel.on('breakpoint', function(event, slick, currentSlide, nextSlide){
-        // console.log('hit');
-      });
+  return {
+    initCarousel: initCarousel
+  };
 
-    };
+})();
 
-    return {
-      initCarousel: initCarousel
-    };
-
-  })();
-
-  /* Exposing our functions to the rest of the application */
-  module.exports = Vendor;
-
-})(jQuery);
+export default Vendor;

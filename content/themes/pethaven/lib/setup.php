@@ -27,6 +27,7 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus([
     'primary_navigation' => __('Primary Navigation', 'sage'),
+    'secondary_navigation' => __('Secondary Navigation', 'sage'),
     'footer_navigation' => __('Footer Navigation', 'sage'),
     'mobile_navigation' => __('Mobile Navigation', 'sage')
   ]);
@@ -86,7 +87,7 @@ function display_sidebar() {
     // @link https://codex.wordpress.org/Conditional_Tags
     is_404(),
     is_front_page(),
-    is_page_template('template-custom.php'),
+    is_page_template('template-custom.php')
   ]);
 
   return apply_filters('sage/display_sidebar', $display);
@@ -97,15 +98,39 @@ function display_sidebar() {
  */
 function assets() {
 
-  wp_enqueue_style('font-raleway', 'https://fonts.googleapis.com/css?family=Raleway:400,700', [], null, true);
-  wp_enqueue_style('css', Assets\asset_path('assets/css/app.min.css'), false, null);
-
+  /* Comments */
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_enqueue_script('js-vendor', Assets\asset_path('assets/js/vendor.min.js'), [], null, true);
-  wp_enqueue_script('js', Assets\asset_path('assets/js/app.min.js'), [], null, true);
+  if(!is_admin()) {
+
+    /* CSS */
+    wp_enqueue_style('font-raleway', 'https://fonts.googleapis.com/css?family=Raleway:400,700', [], null, true);
+    wp_enqueue_style('css', Assets\asset_path('assets/css/app.min.css'), false, null);
+    wp_enqueue_style('slick-slider', '//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css', false, null);
+
+    /* JS */
+    wp_enqueue_script('js-vendor', Assets\asset_path('assets/js/vendor.min.js'), [], null, true);
+    wp_enqueue_script('js', Assets\asset_path('assets/js/app.min.js'), [], null, true);
+
+  }
 
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+//
+// Creating options page
+//
+if(function_exists('acf_add_options_page')) {
+
+  acf_add_options_page(array(
+    'page_title'  => 'Theme Settings',
+    'menu_title'  => 'Theme Settings',
+    'menu_slug'   => 'theme-settings',
+    'capability'  => 'edit_posts',
+    'icon_url'    => 'dashicons-hammer',
+    'redirect'    => false
+  ));
+
+}

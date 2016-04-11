@@ -36,10 +36,15 @@ Author email:   arobbins@simpleblend.net
 //
 // Components
 //
+@import "components/breadcrumbs";
 @import "components/components";
+@import "components/how-we-work";
 @import "components/buttons";
 @import "components/forms";
 @import "components/tables";
 @import "components/comments";
 @import "components/widgets";
-@import "components/nav";
+@import "components/menus";
+@import "components/social";
+
+@import "components/marquees";

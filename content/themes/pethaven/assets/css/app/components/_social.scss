@@ -1,0 +1,14 @@
+.social-links {
+  margin-left: 1em;
+}
+
+.social-link {
+  width: 46px;
+  height: 46px;
+  display: inline-block;
+  margin-top: 6px;
+
+
+  @include dim;
+
+}
