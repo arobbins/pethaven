@@ -37,6 +37,6 @@ const config = {
   bs: browserSync.create(),
   serverName: "pethaven.dev"
 
-}
+};
 
 export default config;

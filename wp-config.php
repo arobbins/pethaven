@@ -82,7 +82,7 @@ define('WP_DEBUG', false);
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
 
 if(isset($_SERVER['HTTP_HOST'])) {
-	define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );	
+	define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
 }
 
 /* That's all, stop editing! Happy blogging. */

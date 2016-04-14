@@ -1,0 +1,42 @@
+.component {}
+
+
+
+.component-releated {}
+
+.component-releated-custom {}
+.component-releated-latest {}
+.component-releated-category {}
+
+.component-related-item {
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.component-related-item-title {
+  color: white;
+  font-size: rem($font-xs + 4px);
+  background-color: transparentize(color(secondary), .3);
+  text-align: center;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 10px 0;
+  margin-bottom: 2em;
+}
+
+.component-related-item-img {
+  min-height: 250px;
+  background-size: cover;
+  background-position: 50% 50%;
+
+  @include shadow-subtle;
+}
+
+.component-related-item-content {
+  margin-top: 2em; 
+}

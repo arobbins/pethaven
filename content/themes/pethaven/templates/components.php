@@ -14,6 +14,11 @@
           get_template_part('components/how-we-work/view');
         endif;
 
+        // Related
+        if(get_row_layout() == 'components_related'):
+          get_template_part('components/related/view');
+        endif;
+
       endwhile;
     endif;
 
