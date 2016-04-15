@@ -19,6 +19,11 @@
           get_template_part('components/related/view');
         endif;
 
+        // Pet Finder
+        if(get_row_layout() == 'component_pet_finder'):
+          get_template_part('components/pet-finder/view');
+        endif;
+
       endwhile;
     endif;
 

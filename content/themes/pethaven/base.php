@@ -24,18 +24,32 @@ use Roots\Sage\Wrapper;
     <div class="l-col l-col-center" role="document">
 
       <?php get_template_part('templates/page', 'header'); ?>
-      <?php get_template_part('templates/components'); ?>
-      
+
+
+      <?php
+        if(!Setup\display_sidebar()) {
+          get_template_part('templates/components');
+        }
+      ?>
+
       <div class="l-row main">
 
-        <?php if (Setup\display_sidebar()) : ?>
+        <?php if(Setup\display_sidebar()) : ?>
+
           <aside class="sidebar">
             <?php include Wrapper\sidebar_path(); ?>
-          </aside><!-- /.sidebar -->
+          </aside>
+
         <?php endif; ?>
 
         <main class="l-fill content">
-          <?php include Wrapper\template_path(); ?>
+          <?php
+            include Wrapper\template_path();
+
+            if(Setup\display_sidebar()) {
+              get_template_part('templates/components');
+            }
+          ?>
         </main>
       </div>
 
