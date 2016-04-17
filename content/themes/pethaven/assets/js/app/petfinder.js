@@ -30,15 +30,23 @@ const PF = (function() {
   //
   // Generic search
   //
-  const getPets = function() {
+  const getPets = function({animalType = $container.data("animal-type"), zipcode = 55408} = {}) {
 
-    var animalType = $container.data("animal-type"),
-        location = 55408,
-        url = endpoint + methodFindPets + '?key=' + APIkey + '&animal=' + animalType + '&format=' + format + '&location=' + location + '&callback=?';
+    var url = endpoint + methodFindPets + '?key=' + APIkey + '&animal=' + animalType + '&format=' + format + '&location=' + zipcode + '&callback=?';
 
     return $.ajax({
       url: url,
-      dataType: 'jsonp'
+      dataType: 'jsonp',
+      beforeSend: function( xhr ) {
+console.log('startted');
+        $('.component-pet-finder .spinner').removeClass('is-hidden');
+
+      },
+      success: function () {
+console.log('donee');
+        $('.component-pet-finder .spinner').addClass('is-hidden');
+
+      }
     }).promise();
 
   };

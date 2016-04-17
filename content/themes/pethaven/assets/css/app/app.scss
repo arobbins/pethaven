@@ -10,9 +10,9 @@ Author email:   arobbins@simpleblend.net
 // Utilities
 //
 @import "utilities/functions";
+@import "utilities/state";
 @import "utilities/mixins";
 @import "utilities/common";
-@import "utilities/state";
 @import "utilities/variables";
 
 //
@@ -49,3 +49,4 @@ Author email:   arobbins@simpleblend.net
 @import "components/marquees";
 @import "components/related";
 @import "components/pet-finder";
+@import "components/spinner";

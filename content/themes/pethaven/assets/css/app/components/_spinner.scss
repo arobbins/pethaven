@@ -1,0 +1,12 @@
+.spinner {
+  font-size: 30px;
+  animation-duration: $speed-slow;
+  z-index: 99999999999999;
+  position: absolute;
+  top: 1%;
+  left: 45.8%;
+  transform-origin: 50% 48%;
+
+  @include spinner;
+  @include rotate;
+}

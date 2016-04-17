@@ -9,4 +9,4 @@ Vendor.initCarousel();
 
 // Components
 componentPetFinder.loadPets();
-// componentPetFinder.initGrid();
+componentPetFinder.detectFilterEvents();

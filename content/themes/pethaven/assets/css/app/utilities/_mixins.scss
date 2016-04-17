@@ -27,6 +27,23 @@
   box-shadow: 0px 0px 19px -4px rgba(125,125,125,1);
 }
 
+@mixin spinner() {
+  border-left: 6px solid transparentize(color(highlight), 0.8);
+  border-right: 6px solid transparentize(color(highlight), 0.8);
+  border-bottom: 6px solid transparentize(color(highlight), 0.8);
+  border-top: 6px solid color(highlight);
+  position: absolute;
+  margin: 0 auto;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+}
+
+@mixin rotate() {
+  animation: rotate $speed-slow infinite linear;
+}
+
+
 //
 // Breakpoints
 //
