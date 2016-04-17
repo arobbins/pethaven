@@ -33,7 +33,7 @@
     "isotope-layout": "^2.2.2",
     "jquery": "^2.2.1",
     "request": "^2.69.0",
-    "rx": "^4.0.8",
+    "rx": "^4.1.0",
     "rx-dom": "^7.0.3",
     "slick-carousel": "^1.5.9",
     "vinyl-buffer": "^1.0.0",

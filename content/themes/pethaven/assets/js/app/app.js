@@ -1,6 +1,4 @@
 import Vendor from './vendor';
-import PF from './petfinder';
-
 import componentPetFinder from './component-petfinder';
 
 
@@ -9,8 +7,6 @@ import componentPetFinder from './component-petfinder';
 //
 Vendor.initCarousel();
 
-// Pet Finder API
-PF.getPets();
-
 // Components
-componentPetFinder.initGrid();
+componentPetFinder.loadPets();
+// componentPetFinder.initGrid();

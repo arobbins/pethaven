@@ -33,7 +33,8 @@ const config = {
   libs: [
     'jquery',
     'slick-carousel',
-    'isotope-layout'
+    'isotope-layout',
+    'rx'
   ],
   bs: browserSync.create(),
   serverName: "pethaven.dev"

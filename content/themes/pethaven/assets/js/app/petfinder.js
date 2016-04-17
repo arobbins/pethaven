@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Rx from 'rx';
 
 const PF = (function() {
 
@@ -9,6 +10,7 @@ const PF = (function() {
   let format = 'json';
 
   let $container = $('.component-pet-finder');
+
 
   //
   // Get Breeds
@@ -24,6 +26,7 @@ const PF = (function() {
 
   };
 
+
   //
   // Generic search
   //
@@ -33,9 +36,10 @@ const PF = (function() {
         location = 55408,
         url = endpoint + methodFindPets + '?key=' + APIkey + '&animal=' + animalType + '&format=' + format + '&location=' + location + '&callback=?';
 
-    $.getJSON(url, function(data) {
-      console.log(data);
-    });
+    return $.ajax({
+      url: url,
+      dataType: 'jsonp'
+    }).promise();
 
   };
 
