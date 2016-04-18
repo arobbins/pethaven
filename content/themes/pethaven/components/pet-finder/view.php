@@ -17,7 +17,7 @@
       <div class="form-control-inline">
         <label for="type">Type</label>
         <select class="component-pet-finder-filter-type" name="type">
-          <option value="all">All</option>
+          <option value="">All</option>
           <option value="cat" selected>Cats</option>
           <option value="dog">Dogs</option>
         </select>

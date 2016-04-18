@@ -38,14 +38,10 @@ const PF = (function() {
       url: url,
       dataType: 'jsonp',
       beforeSend: function( xhr ) {
-console.log('startted');
         $('.component-pet-finder .spinner').removeClass('is-hidden');
-
       },
       success: function () {
-console.log('donee');
         $('.component-pet-finder .spinner').addClass('is-hidden');
-
       }
     }).promise();
 
