@@ -1,16 +1,18 @@
-(function($) {
+const Utils = (() => {
 
-  var Utils = (function() {
+  var toInitialCase = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
-    var test = function() {};
+  var hasClass = (el, cls) => {
+    return el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
+  };
 
-    return {
-      test: test
-    };
+  return {
+    toInitialCase: toInitialCase,
+    hasClass: hasClass
+  };
 
-  })();
+})();
 
-  /* Exposing our functions to the rest of the application */
-  module.exports = Utils;
-
-})(jQuery);
+export default Utils;

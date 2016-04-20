@@ -1,0 +1,14 @@
+.msg {
+  display: none;
+  padding: 1em 2em;
+  margin-top: 4em;
+  color: white;
+}
+
+.msg-notice {
+  background-color: color(secondary);
+}
+
+.is-empty .msg {
+  display: block;
+}

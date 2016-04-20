@@ -1,5 +1,4 @@
 <?php
 
-  $animalType = get_sub_field('type');
-
+  $animalType = ucwords(get_sub_field('type'));
 ?>

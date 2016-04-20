@@ -5,7 +5,8 @@ const PF = (function() {
 
   let endpoint = 'http://api.petfinder.com';
   let methodBreedList = '/breed.list';
-  let methodFindPets = '/pet.find';
+  let methodFindPets = '/shelter.getPets';
+  let shelterID = 'MN36';
   let APIkey = '454b72d5b9fc8fca72c7a461a5ac46d2';
   let format = 'json';
 
@@ -20,9 +21,16 @@ const PF = (function() {
     var animalType = $container.data("animal-type"),
         url = endpoint + methodBreedList + '?key=' + APIkey + '&animal=' + animalType + '&format=' + format + '&callback=?';
 
-    $.getJSON(url, function(data) {
-      console.log(data);
-    });
+    return $.ajax({
+      url: url,
+      dataType: 'jsonp',
+      beforeSend: function(xhr) {
+        // $('.component-pet-finder .spinner').removeClass('is-hidden');
+      },
+      success: function () {
+        // $('.component-pet-finder .spinner').addClass('is-hidden');
+      }
+    }).promise();
 
   };
 
@@ -30,9 +38,9 @@ const PF = (function() {
   //
   // Generic search
   //
-  const getPets = function({animalType = $container.data("animal-type"), zipcode = 55408} = {}) {
+  const getPets = function() {
 
-    var url = endpoint + methodFindPets + '?key=' + APIkey + '&animal=' + animalType + '&format=' + format + '&location=' + zipcode + '&callback=?';
+    var url = endpoint + methodFindPets + '?key=' + APIkey + '&id=' + shelterID + '&format=' + format + '&callback=?';
 
     return $.ajax({
       url: url,

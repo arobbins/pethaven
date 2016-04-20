@@ -1,4 +1,6 @@
 .component-pet-finder {
+  padding-bottom: 0;
+
   .l-contain {
     position: relative;
   }
@@ -9,20 +11,49 @@
   width: 100%;
 }
 
+.grid-sizer,
 .grid-item {
-  padding: 10px;
-  width: 32%;
+  width: 28%;
+
+  @include respond-to(800, 'max') {
+    width: 46%;
+  }
+
+  @include respond-to(400, 'max') {
+    width: 100%;
+  }
 }
 
-.grid-gutter {
-  width: 1%;
+.grid-item {
+  padding: 10px;
+  margin: 20px;
+  border: 1px solid #e6e6e6;
+
+  @include shadow-subtle;
+
+  &:hover {
+    cursor: pointer;
+
+    @include dim-subtle;
+  }
 }
+
+// .grid-gutter {
+//   width: 4%;
+// }
 
 .pet-image {
   display: block;
   width: 100%;
+
 }
 
 .pet-name {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.pet-breed {
   margin-top: 0;
+  text-transform:capitalize;
 }

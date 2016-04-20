@@ -106,6 +106,7 @@ function assets() {
   if(!is_admin()) {
 
     /* CSS */
+    wp_enqueue_style('animate-css', Assets\asset_path('assets/css/vendor/animate.min.css'), false, null);
     wp_enqueue_style('font-raleway', 'https://fonts.googleapis.com/css?family=Raleway:400,700', [], null, true);
     wp_enqueue_style('css', Assets\asset_path('assets/css/app.min.css'), false, null);
     wp_enqueue_style('slick-slider', '//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css', false, null);
