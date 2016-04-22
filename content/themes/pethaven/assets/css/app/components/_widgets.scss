@@ -27,7 +27,10 @@
 .widget-social {
   .textwidget {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+  }
+  .social-link {
+    margin-right: 10px;
   }
 }
 

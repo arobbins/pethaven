@@ -36,7 +36,8 @@ const config = {
     'isotope-layout',
     'rx',
     'imagesloaded',
-    'lodash'
+    'lodash',
+    'slideout'
   ],
   bs: browserSync.create(),
   serverName: "pethaven.dev"

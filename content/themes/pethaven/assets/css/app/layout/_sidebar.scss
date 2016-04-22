@@ -1,4 +1,11 @@
 .sidebar {
-  width: 250px;
-  margin-right: 3em;
+  width: 30%;
+  margin-right: 30px;
+
+  @include respond-to(700, 'max') {
+    width:  100%;
+    flex: 1;
+    margin-right: 0;
+    margin-top: 2em;
+  }
 }

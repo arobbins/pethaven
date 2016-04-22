@@ -29,9 +29,8 @@
   @include shadow-subtle;
 
   &:hover {
-    cursor: pointer;
-
-    @include dim-subtle;
+    // cursor: pointer;
+    // @include dim-subtle;
   }
 }
 

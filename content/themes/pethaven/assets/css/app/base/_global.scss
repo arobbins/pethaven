@@ -13,6 +13,8 @@ html {
 html, body {
   padding: 0;
   margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -97,7 +99,7 @@ h2 {
   }
 
   @include respond-to(400, 'max') {
-    font-size: rem(32px);
+    font-size: rem(24px);
   }
 }
 
@@ -138,10 +140,11 @@ blockquote {
   @include dim;
 
   img {
-    max-width: 85%;
+    width: 100%;
   }
 }
 
 .header .logo {
   margin-left: 0;
+  max-width: 240px;
 }

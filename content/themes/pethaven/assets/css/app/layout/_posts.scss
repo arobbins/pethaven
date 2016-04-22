@@ -1,3 +1,7 @@
+.post {
+  margin-bottom: 2em;
+}
+
 .entry-meta {
   margin-bottom: 1em;
 }
@@ -15,5 +19,18 @@
   display: inline;
 
   a {}
-  
+
+}
+
+.posts-navigation {
+  margin: 4em 0 2em;
+
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .screen-reader-text {
+    display: none;
+  }
 }

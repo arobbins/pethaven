@@ -1,6 +1,6 @@
 <header class="header">
-  <div class="l-row l-row-center l-contain l-box">
-    <a class="l-box-3 logo" href="<?= esc_url(home_url('/')); ?>">
+  <div class="header-wrap l-row l-row-center l-contain l-box">
+    <a class="logo" href="<?= esc_url(home_url('/')); ?>">
       <img src="<?php the_field('theme_logo_primary', 'option'); ?>" alt="Pet Haven">
     </a>
     <nav class="l-col l-row-right l-fill nav-primary">
@@ -25,5 +25,10 @@
       </div>
 
     </nav>
+
+    <button class="toggle-button">
+      <span>Toggle Menu</span>
+    </button>
+
   </div>
 </header>

@@ -134,18 +134,21 @@ const componentPetFinder = (() => {
   //
   const initGrid = () => {
 
-    var iso = new Isotope('.component-pet-finder-grid', {
-      itemSelector: '.grid-item',
-      percentPosition: true,
-      masonry: {
-        columnWidth: '.grid-item',
-        gutter: 2
-      }
-    });
+    if($('.component-pet-finder-grid').length) {
 
-    filterSelection(iso);
-    detectFilterEvents(iso);
+      var iso = new Isotope('.component-pet-finder-grid', {
+        itemSelector: '.grid-item',
+        percentPosition: true,
+        masonry: {
+          columnWidth: '.grid-item',
+          gutter: 2
+        }
+      });
 
+      filterSelection(iso);
+      detectFilterEvents(iso);
+
+    }
   };
 
 

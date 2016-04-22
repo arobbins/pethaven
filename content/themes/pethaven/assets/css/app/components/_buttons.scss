@@ -1,5 +1,7 @@
 .btn,
-span.btn {
+span.btn,
+.nav-previous a,
+.nav-next a {
   color: white;
   padding: rem($space-s) rem($space-m);
   font-size: $btn-s;

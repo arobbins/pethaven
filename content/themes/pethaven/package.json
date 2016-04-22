@@ -38,6 +38,7 @@
     "rx": "^4.1.0",
     "rx-dom": "^7.0.3",
     "slick-carousel": "^1.5.9",
+    "slideout": "^0.1.12",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "webcomponents.js": "^0.7.21"

@@ -17,6 +17,11 @@
   display: none;
 }
 
+.nav {
+  list-style: none;
+  margin: 0;
+}
+
 .nav-menu {
   text-align: center;
   font-family: $font-primary;
@@ -56,6 +61,12 @@
     }
   }
 
+}
+
+.nav-primary {
+  @include respond-to(800, 'max') {
+    display: none;
+  }
 }
 
 .menu-primary {
@@ -102,10 +113,6 @@
 
 }
 
-.menu-primary-navigation-container {
-  margin-top: 1em;
-}
-
 .sub-menu {
   display: none;
   margin: 0;
@@ -119,6 +126,11 @@
   width: 170px;
   color: white;
   z-index: 99999999999999999999999999999999;
+
+  .sub-menu {
+    left: 170px;
+    top: 0;
+  }
 
   @include shadow-subtle;
 
@@ -139,4 +151,190 @@
       border-bottom: 0;
     }
   }
+}
+
+
+/*
+
+Mobile Menu
+
+*/
+.slideout-menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  width: 256px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+}
+
+.slideout-panel {
+  position:relative;
+  z-index: 1;
+  will-change: transform;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
+
+.nav-mobile {
+  opacity: 0;
+  display: none;
+}
+
+.slideout-open {
+  .nav-mobile {
+    opacity: 1;
+  }
+}
+
+.menu-mobile-navigation-container {
+  display: none;
+  background-color: white;
+  padding: 1.5em 1em 1em;
+  transition: all 11s ease;
+
+  .menu-item {
+    text-align: left;
+    margin: 0.5em 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 0;
+    width: 100%;
+    margin-bottom: 1em;
+
+    a {
+      color: color(primary);
+      width: 100%;
+      display: block;
+      padding: 0.5em 0;
+    }
+  }
+}
+
+.menu-primary-navigation-container {
+  width: 100%;
+  margin-top: 1em;
+}
+
+.menu-secondary-navigation-container {
+  // width: 80%;
+  // margin-right: 1em;
+}
+
+.toggle-button {
+  display: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  font-size: 0;
+  text-indent: -9999px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  background-color: color(secondary);
+  position: absolute;
+  right: 10px;
+  top: 25px;
+
+  &:hover {
+    background-color: color(secondary);
+  }
+
+  @include respond-to(800, 'max') {
+    display: block;
+    float: right;
+  }
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggle-button span {
+  display: block;
+  position: absolute;
+  top: 28px;
+  left: 10px;
+  right: 18px;
+  height: 4px;
+  background: white;
+  width: 65%;
+}
+
+.toggle-button span::before,
+.toggle-button span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  content: "";
+}
+
+.toggle-button span::before {
+  top: -10px;
+}
+
+.toggle-button span::after {
+  bottom: -10px;
+}
+
+.toggle-button span {
+  transition: background 0s 0.3s;
+}
+
+.toggle-button span::before,
+.toggle-button span::after {
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0.3s, 0s;
+}
+
+.toggle-button span::before {
+  transition-property: top, transform;
+}
+
+.toggle-button span::after {
+  transition-property: bottom, transform;
+}
+
+/* active state, i.e. menu open */
+.toggle-button.is-active {
+  // background-color: #cb0032;
+}
+
+.toggle-button.is-active span {
+  background: none;
+}
+
+.toggle-button.is-active span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.toggle-button.is-active span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.toggle-button.is-active span::before,
+.toggle-button.is-active span::after {
+  transition-delay: 0s, 0.3s;
 }

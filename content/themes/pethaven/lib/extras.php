@@ -45,3 +45,17 @@ function social($atts) {
   return $content;
 }
 add_shortcode('social', __NAMESPACE__ . '\\social');
+
+
+/*
+
+ Team shortcode
+
+*/
+function team($atts) {
+  ob_start();
+  include(locate_template('components/team/view.php'));
+  $content = ob_get_clean();
+  return $content;
+}
+add_shortcode('team', __NAMESPACE__ . '\\team');

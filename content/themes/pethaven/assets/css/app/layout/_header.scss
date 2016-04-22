@@ -1,26 +1,16 @@
 .header {
   padding: 2em 0 1em;
 
-  @include respond-to(800, 'max') {}
-  @include respond-to(500, 'max') {}
-}
-
-.header-wrapper {
-
-  @include respond-to(1100, 'max') {}
-  @include respond-to(800, 'max') {}
-
-  @include respond-to(500, 'max') {
-    @extend .pattern-wood;
+  @include respond-to(800, 'max') {
+    padding: 1em 0;
   }
+
 }
 
-.header-footer {
-  @include respond-to(500, 'max') {}
-}
-
-.header-mobile-icon {
-  @include mobile-menu-icon;
+.header-wrap {
+  @include respond-to(800, 'max') {
+    justify-content: flex-start;
+  }
 }
 
 .page-header {
