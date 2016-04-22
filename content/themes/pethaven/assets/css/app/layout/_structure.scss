@@ -46,7 +46,7 @@
 }
 
 .content {
-  width: 64%;
+  //width: 64%;
 
   @include respond-to(700, 'max') {
     width:  100%;

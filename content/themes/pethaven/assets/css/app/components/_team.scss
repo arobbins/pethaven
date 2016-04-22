@@ -1,7 +1,38 @@
-.component-team {}
+.component-team {
+  padding: 1em 0;
 
-.team-member {}
-.team-image {}
-.team-name {}
-.team-title {}
+  .team-member {
+    width: 45%;
+
+    &:nth-child(odd) {
+      margin-left: 0;
+    }
+
+    @include respond-to(600, 'max') {
+      width: 100%;
+    }
+  }
+}
+
+.page-template-default .team-member {
+  @media (max-width:1000px) and (min-width:700px) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.team-image {
+  margin-bottom: 10px;
+}
+
+.team-name {
+  margin-bottom: 0;
+}
+
+.team-title {
+  margin-top: 0;
+  color: color(highlight);
+  font-size: $font-s;
+}
+
 .team-bio {}

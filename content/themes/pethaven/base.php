@@ -39,7 +39,7 @@ use Roots\Sage\Wrapper;
 
           <?php endif; ?>
 
-          <main class="content">
+          <main class="content l-fill">
             <?php
               include Wrapper\template_path();
 
