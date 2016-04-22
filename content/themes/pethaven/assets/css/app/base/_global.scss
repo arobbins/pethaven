@@ -21,7 +21,7 @@ body {
   min-height: 100vh;
   line-height: 1.4;
   font-size: $font-base;
-  font-family: helvetica, arial;
+  font-family: $font-secondary;
   color: color(base);
   -webkit-backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
@@ -50,6 +50,9 @@ ul, ol, dl {
   margin: rem($space-s) 0 rem($space-s) rem($space-s);
 }
 
+p {
+  font-family: $font-secondary;
+}
 
 //
 // Typography
