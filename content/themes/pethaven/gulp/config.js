@@ -35,7 +35,8 @@ const config = {
     'slick-carousel',
     'isotope-layout',
     'rx',
-    'imagesloaded'
+    'imagesloaded',
+    'lodash'
   ],
   bs: browserSync.create(),
   serverName: "pethaven.dev"

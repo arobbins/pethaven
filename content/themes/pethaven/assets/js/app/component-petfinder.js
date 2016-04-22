@@ -3,6 +3,7 @@ import Isotope from 'isotope-layout';
 import PF from './petfinder';
 import Rx from 'rx';
 import imagesloaded from 'imagesloaded';
+import _ from 'lodash';
 import Utils from './utils';
 
 const componentPetFinder = (() => {
@@ -12,14 +13,14 @@ const componentPetFinder = (() => {
       $spinner = $('.component-pet-finder .spinner'),
       $inputZipcode = $('.component-pet-finder-filter-zipcode'),
       $inputType = $('.component-pet-finder-filter-type'),
-      $inputBreed = $('.component-pet-finder-filter-breed'),
+      $inputBreeds = $('.component-pet-finder-filter-breed'),
       $inputSize = $('.component-pet-finder-filter-size'),
       $inputAge = $('.component-pet-finder-filter-age'),
       $buttonClear = $('.component-pet-finder-filter-clear'),
       $msg = $('.component-pet-finder .msg'),
       selectedFilters = {
         type: null,
-        breed: null,
+        breeds: null,
         size: null,
         age: null
       };
@@ -63,13 +64,13 @@ const componentPetFinder = (() => {
     $inputType.prop('selectedIndex', 0);
     $inputSize.prop('selectedIndex', 0);
     $inputAge.prop('selectedIndex', 0);
-    $inputBreed.val('');
+    $inputBreeds.val('');
 
     selectedFilters = {
-      type: true,
-      breed: true,
-      size: true,
-      age: true
+      type: null,
+      breeds: null,
+      size: null,
+      age: null
     };
 
     iso.arrange({
@@ -122,7 +123,7 @@ const componentPetFinder = (() => {
           breedClasses = createBreedsList(breeds),
           petImage = createPetImage(pet);
 
-      $grid.append($("<div class='grid-item " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'>" + breedClasses + "</p></div>"));
+      $grid.append($("<div class='grid-item " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'><strong>Breeds</strong>" + breedClasses + "</p><p class='pet-age'><strong>Age:</strong> " + pet.age.$t + "</p></div>"));
 
     });
   };
@@ -142,80 +143,57 @@ const componentPetFinder = (() => {
       }
     });
 
-    filterByAnimalType(iso);
+    filterSelection(iso);
     detectFilterEvents(iso);
 
   };
 
 
   //
-  // Filter By Animal Type
+  // Filter Selection
   //
-  const filterByAnimalType = (iso) => {
+  const filterSelection = (iso) => {
 
     iso.arrange({
       filter: function(itemElem) {
 
-        if($inputType.val() !== "All") {
+        var element = {
+          type: itemElem.dataset.type,
+          breeds: itemElem.dataset.breeds,
+          size: itemElem.dataset.size,
+          age: itemElem.dataset.age
+        };
 
-          return $inputType.val() === itemElem.dataset.type;
+        // Remove the null values ...
+        var selected = _.omitBy(selectedFilters, _.isNull);
+
+        if(selected.breeds) {
+
+          if(element.breeds.indexOf(selected.breeds) > -1) {
+
+            var elementWithoutBreeds = {
+              type: element.type,
+              age: element.age,
+              size: element.size
+            };
+
+            var selectedWithoutBreeds = {
+              type: selectedFilters.type,
+              age: selectedFilters.age,
+              size: selectedFilters.size
+            };
+
+            var selectedWithoutBreedsAndNull = _.omitBy(selectedWithoutBreeds, _.isNull);
+
+            return _.some([elementWithoutBreeds], selectedWithoutBreedsAndNull);
+
+          }
 
         } else {
-
-          return true;
+          return _.some([element], selected);
 
         }
 
-      }
-    });
-
-  };
-
-
-  //
-  // Filter By Breed
-  //
-  const filterByAnimalBreed = (iso) => {
-
-    iso.arrange({
-      filter: function(itemElem) {
-        if($inputBreed.val().length > 0) {
-
-          return itemElem.dataset.breeds.indexOf($inputBreed.val()) > -1;
-
-        } else {
-
-          return true;
-
-        }
-      }
-    });
-
-  };
-
-
-  //
-  // Filter By Size
-  //
-  const filterByAnimalSize = (iso) => {
-
-    iso.arrange({
-      filter: function(itemElem) {
-        return $inputSize.val() === itemElem.dataset.size;
-      }
-    });
-
-  };
-
-
-  //
-  // Filter By Age
-  //
-  const filterByAnimalAge = (iso) => {
-
-    iso.arrange({
-      filter: function(itemElem) {
-        return $inputAge.val() === itemElem.dataset.age;
       }
     });
 
@@ -229,7 +207,6 @@ const componentPetFinder = (() => {
 
     $buttonClear.click(() => {
       clearFilters(iso);
-      console.log(selectedFilters);
     });
 
   };
@@ -241,9 +218,17 @@ const componentPetFinder = (() => {
   const onType = (iso) => {
 
     $inputType.change(() => {
-      // selectedFilters.type = $inputType.val();
-      // console.log(selectedFilters);
-      filterByAnimalType(iso);
+
+      if($inputType.val().length === 0) {
+        selectedFilters.type = null;
+
+      } else {
+        selectedFilters.type = $inputType.val();
+
+      }
+
+      filterSelection(iso);
+
     });
 
   };
@@ -254,10 +239,18 @@ const componentPetFinder = (() => {
   //
   const onBreed = (iso) => {
 
-    $inputBreed.keyup(() => {
-      selectedFilters.breed = $inputBreed.val();
-      console.log(selectedFilters);
-      filterByAnimalBreed(iso);
+    $inputBreeds.keyup(() => {
+
+      if($inputBreeds.val().length === 0) {
+        selectedFilters.breeds = null;
+
+      } else {
+        selectedFilters.breeds = $inputBreeds.val().toLowerCase();
+
+      }
+
+      filterSelection(iso);
+
     });
 
   };
@@ -269,11 +262,8 @@ const componentPetFinder = (() => {
   const onSize = (iso) => {
 
     $inputSize.change(() => {
-
       selectedFilters.size = $inputSize.val();
-      console.log(selectedFilters);
-      filterByAnimalSize(iso);
-
+      filterSelection(iso);
     });
 
   };
@@ -285,7 +275,8 @@ const componentPetFinder = (() => {
   const onAge = (iso) => {
 
     $inputAge.change(() => {
-      filterByAnimalAge(iso);
+      selectedFilters.age = $inputAge.val();
+      filterSelection(iso);
     });
 
   };
@@ -296,9 +287,7 @@ const componentPetFinder = (() => {
   //
   const onFinish = (iso) => {
     iso.on('arrangeComplete', function(filteredItems) {
-
       checkForEmptyResults(filteredItems);
-
     });
   };
 

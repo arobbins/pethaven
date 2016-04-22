@@ -3,11 +3,10 @@
   include('controller.php');
 
 ?>
-
 <section class="component component-pet-finder" data-animal-type-default="<?php echo $animalType; ?>">
   <div class="l-contain l-box l-row l-row-center">
 
-    <form class="component-pet-finder-filter l-row" action="" method="post">
+    <form class="component-pet-finder-filter l-row l-row-center l-col-center" action="" method="post">
 
       <div class="form-control-inline">
         <label for="type">Animal</label>
@@ -18,7 +17,7 @@
            	// loop through the rows of data
             while ( have_rows('theme_petfinder_animal_types', 'option') ) : the_row(); ?>
 
-              <option value="<?php the_sub_field('type'); ?>" <?php echo get_sub_field('type') === $animalType ? 'selected' : null; ?>><?php the_sub_field('type'); ?><?php echo get_sub_field('type') !== 'All' ? 's' : null; ?></option>
+              <option value="<?php echo get_sub_field('type') === 'All' ? null : the_sub_field('type'); ?>" <?php echo get_sub_field('type') === $animalType ? 'selected' : null; ?> <?php echo get_sub_field('type') !== 'All' ? 'required' : null; ?>><?php the_sub_field('type'); ?><?php echo get_sub_field('type') !== 'All' ? 's' : null; ?></option>
 
             <?php endwhile;
           endif;
