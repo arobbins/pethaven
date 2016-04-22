@@ -118,12 +118,12 @@ const componentPetFinder = (() => {
   //
   const insertPetsIntoDOM = (pets) => {
     $.each(pets, (key, pet) => {
-      console.log(pet);
+
       var breeds = pet.breeds.breed,
           breedClasses = createBreedsList(breeds),
           petImage = createPetImage(pet);
 
-      $grid.append($("<div class='grid-item " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'><strong>Breeds</strong>" + breedClasses + "</p><p class='pet-age'><strong>Age:</strong> " + pet.age.$t + "</p></div>"));
+      $grid.append($("<a href='https://www.petfinder.com/petdetail/" + pet.id.$t + "' class='pet-link'><div class='grid-item " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'><strong>Breeds</strong>" + breedClasses + "</p><p class='pet-age'><strong>Age:</strong> " + pet.age.$t + "</p><p class='pet-size'><strong>Size:</strong> " + pet.size.$t + "</p></div></a>"));
 
     });
   };

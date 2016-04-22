@@ -25,13 +25,6 @@ use Roots\Sage\Wrapper;
 
       <?php get_template_part('templates/page', 'header'); ?>
 
-
-      <?php
-        if(!Setup\display_sidebar()) {
-          get_template_part('templates/components');
-        }
-      ?>
-
       <div class="l-row main">
 
         <?php if(Setup\display_sidebar()) : ?>
@@ -42,7 +35,7 @@ use Roots\Sage\Wrapper;
 
         <?php endif; ?>
 
-        <main class="l-fill content">
+        <main class="content l-contain l-box">
           <?php
             include Wrapper\template_path();
 
@@ -52,6 +45,12 @@ use Roots\Sage\Wrapper;
           ?>
         </main>
       </div>
+
+      <?php
+        if(!Setup\display_sidebar()) {
+          get_template_part('templates/components');
+        }
+      ?>
 
     </div>
 

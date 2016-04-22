@@ -1,5 +1,8 @@
 .component-pet-finder {
   padding-bottom: 0;
+  padding-top: 0;
+  position: relative;
+  min-height: 300px;
 
   .l-contain {
     position: relative;
@@ -9,12 +12,19 @@
 .component-pet-finder-grid {
   opacity: 0;
   width: 100%;
+  margin-bottom: 2em;
+}
+
+.component-pet-finder-filter-clear {
+  margin: 1em 0 1em 0;
 }
 
 .grid-item {
   padding: 10px;
   margin: 20px;
   border: 1px solid #e6e6e6;
+  box-shadow: 0 1px 3px rgba(0,0,0,.23);
+  transition: opacity 0.2s;
 
   @include shadow-subtle;
 
@@ -61,8 +71,15 @@
 .pet-breed {
   margin: 5px 0;
   text-transform: capitalize;
+  color: color(base);
 }
 
 .pet-age {
+  margin-bottom: 5px;
+}
+
+.pet-size,
+.pet-age {
   margin-top: 0;
+  color: color(base);
 }

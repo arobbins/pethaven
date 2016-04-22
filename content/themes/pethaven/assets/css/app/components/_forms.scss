@@ -3,6 +3,18 @@
 
 .form-control-inline {
   margin: 0 1em;
+
+  @include respond-to(600, 'max') {
+    width: 100%;
+    margin-bottom: 1em;
+    margin-right: 0;
+    margin-left: 0;
+
+    select,
+    input {
+      width: 100%;
+    }
+  }
 }
 
 input[type=search] {

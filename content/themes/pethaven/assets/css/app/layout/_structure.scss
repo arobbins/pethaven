@@ -27,28 +27,26 @@
 }
 
 .main {
-  width: $container-width;
+  max-width: $container-width;
   padding: 2em 0;
 
   img {
     width: 100%;
   }
 
-  @include respond-to(1100, 'max') {
-    width: calc(100% - #{$container-width});
-    min-width: auto;
-    transform: translateX($container-width);
-  }
+  // @include respond-to(1100, 'max') {
+  //   width: calc(100% - #{$container-width});
+  //   min-width: auto;
+  //   transform: translateX($container-width);
+  // }
 
-  @include respond-to(800, 'max') {
-    width: calc(100% - #{$container-width});
-    transform: translateX($container-width);
-  }
+  // @include respond-to(800, 'max') {
+  //   width: calc(100% - #{$container-width});
+  // }
 
   @include respond-to(500, 'max') {
     width:  100%;
     min-width: 100%;
-    transform: none;
     flex: 1;
   }
 }

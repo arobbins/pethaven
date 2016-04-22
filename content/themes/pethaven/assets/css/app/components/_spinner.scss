@@ -2,10 +2,11 @@
   font-size: 30px;
   animation-duration: $speed-slow;
   z-index: 99999999999999;
-  position: absolute;
-  top: 1%;
-  left: 45.8%;
   transform-origin: 50% 48%;
+  position: absolute;
+  top: 100px;
+  left: 47%;
+  z-index: -1;
 
   @include spinner;
   @include rotate;

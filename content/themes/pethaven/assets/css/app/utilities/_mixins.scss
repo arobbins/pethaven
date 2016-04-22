@@ -82,7 +82,7 @@
 // Dim
 //
 @mixin dim-subtle {
-  transition: opacity 0.5 ease;
+  // transition: opacity 0.5 ease;
 
   &:hover {
     opacity: 0.85;
