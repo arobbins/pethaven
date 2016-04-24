@@ -59,3 +59,17 @@ function team($atts) {
   return $content;
 }
 add_shortcode('team', __NAMESPACE__ . '\\team');
+
+
+/*
+
+ Partners shortcode
+
+*/
+function partners($atts) {
+  ob_start();
+  include(locate_template('components/partners/view.php'));
+  $content = ob_get_clean();
+  return $content;
+}
+add_shortcode('partners', __NAMESPACE__ . '\\partners');
