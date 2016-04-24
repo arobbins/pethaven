@@ -119,7 +119,7 @@
   margin: 0 1em;
 
   @include respond-to(900, 'max') {
-    margin: 0.5em;
+    margin: 0.5em 1em;
   }
 
   @include respond-to(600, 'max') {

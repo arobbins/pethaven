@@ -12,7 +12,7 @@
 ?>
 
 <div class="<?php echo $bg ? 'page-header' : 'page-header-collapsed'; ?> l-row l-col-center" style="background-image: url(<?php the_field('page_header_image', $post->ID); ?>);">
-  <div class="l-contain l-row-center">
+  <div class="l-contain l-col l-row-center l-col-center page-header-background">
     <h1 class="page-header-title"><?= Titles\title(); ?></h1>
   </div>
 </div>

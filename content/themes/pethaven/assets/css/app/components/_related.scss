@@ -9,13 +9,21 @@
 .component-releated-category {}
 
 .component-related-item {
-  &:first-child {
-    margin-left: 0;
-  }
 
-  &:last-child {
-    margin-right: 0;
-  }
+  // &:first-child {
+  //   margin-left: 0;
+  // }
+  //
+  // &:last-child {
+  //   margin-right: 0;
+  // }
+  //
+  // @include respond-to(800, 'max') {
+  //   &:first-child {
+  //     margin: .5em 1em;
+  //   }
+  // }
+
 }
 
 .component-related-item-title {
@@ -38,5 +46,5 @@
 }
 
 .component-related-item-content {
-  margin-top: 2em; 
+  margin-top: 2em;
 }

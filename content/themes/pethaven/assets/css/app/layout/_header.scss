@@ -20,6 +20,14 @@
   background-position: 50% 50%;
 }
 
+.page-header-background {
+  background-color: rgba(0, 0, 0, 0.36);
+  height: 100%;
+  width: 100%;
+  min-height: 300px;
+  max-width: 100%;  
+}
+
 .page-header-collapsed {
   display: none;
 }
