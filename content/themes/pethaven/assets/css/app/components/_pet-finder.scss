@@ -13,6 +13,10 @@
   opacity: 0;
   width: 100%;
   margin-bottom: 2em;
+
+  @include respond-to(600, 'max') {
+    max-width: 80%;
+  }
 }
 
 .component-pet-finder-filter-clear {
@@ -36,7 +40,7 @@
 
 .pet-link {
   display: inline-block;
-  
+
   &:hover {
     cursor: pointer;
     @include dim-subtle;

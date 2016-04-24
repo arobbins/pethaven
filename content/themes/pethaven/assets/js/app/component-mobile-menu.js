@@ -3,7 +3,13 @@ import Slideout from 'slideout';
 
 const componentMobileMenu = (function() {
 
-  const init = function() {
+  var $menu = $('.nav-mobile'),
+      $menuIcon = $('.toggle-button'),
+      $menuContainer = $('.menu-mobile-navigation-container'),
+      $slideoutPanel = $('.slideout-panel');
+
+  const init = () => {
+
     var menu = new Slideout({
       'panel': document.getElementById('content'),
       'menu': document.getElementById('menu-mobile'),
@@ -13,47 +19,50 @@ const componentMobileMenu = (function() {
       'touch': false
     });
 
-    document.querySelector('.toggle-button').addEventListener('click', function() {
-      menu.toggle();
-    });
+    toggleMenu(menu);
+    showMobileMenu();
 
-    $('.menu-mobile-navigation-container').show();
-
-    var toggles = document.querySelectorAll(".toggle-button");
-
-    for (var i = toggles.length - 1; i >= 0; i--) {
-      var toggle = toggles[i];
-      toggleHandler(toggle);
-    };
-
-    function toggleHandler(toggle) {
-      toggle.addEventListener( "click", function(e) {
-        e.preventDefault();
-
-        var $menu = $('.nav-mobile');
-
-        if($menu.is(':visible')) {
-          $('.nav-mobile').hide();
-        } else {
-          $('.nav-mobile').fadeIn();
-        }
-
-        (this.classList.contains("is-active") === true) ? this.classList.remove("is-active") : this.classList.add("is-active");
-      });
-    }
+    // menu.on('translatestart', function() {
+    //   console.log('Start');
+    // });
+    //
+    // menu.on('translate', function(translated) {
+    //   console.log('Translate: ' + translated); // 120 in px
+    // });
+    //
+    // menu.on('translateend', function() {
+    //   console.log('End');
+    // });
 
   };
 
-  const toggleMobileMenu = function() {
-    $('.slideout-panel').click(function() {
-      $(this).find('.mobile-icon').toggleClass('fa-bars fa-times');
-      $(this).find('.mobile-icon').next().slideToggle('fast');
+  const showMobileMenu = () => {
+    $menuContainer.fadeIn('slow');
+
+    $menuIcon.click(function(e) {
+      e.preventDefault();
+
+      if($menu.is(':visible')) {
+        $menu.hide();
+
+      } else {
+        $menu.fadeIn();
+
+      }
+
+      $(this).toggleClass("is-active");
+
+    });
+  };
+
+  const toggleMenu = (menu) => {
+    $menuIcon.click(function() {
+      menu.toggle();
     });
   };
 
   return {
-    init: init,
-    toggleMobileMenu: toggleMobileMenu
+    init: init
   };
 
 })();

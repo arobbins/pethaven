@@ -145,6 +145,7 @@ const componentPetFinder = (() => {
         }
       });
 
+      setType();
       filterSelection(iso);
       detectFilterEvents(iso);
 
@@ -156,6 +157,8 @@ const componentPetFinder = (() => {
   // Filter Selection
   //
   const filterSelection = (iso) => {
+
+    console.log('onload: ', selectedFilters);
 
     iso.arrange({
       filter: function(itemElem) {
@@ -222,18 +225,25 @@ const componentPetFinder = (() => {
 
     $inputType.change(() => {
 
-      if($inputType.val().length === 0) {
-        selectedFilters.type = null;
-
-      } else {
-        selectedFilters.type = $inputType.val();
-
-      }
-
+      setType();
       filterSelection(iso);
 
     });
 
+  };
+
+
+  //
+  // Set Animal Type
+  //
+  const setType = () => {
+    if($inputType.val().length === 0) {
+      selectedFilters.type = null;
+
+    } else {
+      selectedFilters.type = $inputType.val();
+
+    }
   };
 
 

@@ -29,7 +29,7 @@
 
       <div class="form-control-inline">
         <label for="breed">Breed</label>
-        <input type="text" class="component-pet-finder-filter-breed" name="breed">
+        <input type="text" class="component-pet-finder-filter-breed" name="breed" placeholder="Lab, terrier, etc">
       </div>
 
       <div class="form-control-inline">

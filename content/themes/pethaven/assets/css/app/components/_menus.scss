@@ -188,6 +188,14 @@ Mobile Menu
   display: block;
 }
 
+.header {
+  // transition: opacity 2.5s ease;
+}
+
+.slideout-open .header + div {
+  // opacity: 0.4;
+}
+
 .nav-mobile {
   opacity: 0;
   display: none;
@@ -204,6 +212,7 @@ Mobile Menu
   background-color: white;
   padding: 1.5em 1em 1em;
   transition: all 11s ease;
+  height: 100%;
 
   .menu-item {
     text-align: left;
@@ -228,11 +237,6 @@ Mobile Menu
   margin-top: 1em;
 }
 
-.menu-secondary-navigation-container {
-  // width: 80%;
-  // margin-right: 1em;
-}
-
 .toggle-button {
   display: none;
   overflow: hidden;
@@ -251,7 +255,7 @@ Mobile Menu
   background-color: color(secondary);
   position: absolute;
   right: 10px;
-  top: 25px;
+  top: 32px;
 
   &:hover {
     background-color: color(secondary);
@@ -260,6 +264,10 @@ Mobile Menu
   @include respond-to(800, 'max') {
     display: block;
     float: right;
+  }
+
+  @include respond-to(500, 'max') {
+    top: 23px;
   }
 }
 

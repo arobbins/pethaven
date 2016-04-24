@@ -150,4 +150,9 @@ blockquote {
 .header .logo {
   margin-left: 0;
   max-width: 240px;
+
+  @include respond-to(500, 'max') {
+    max-width: 190px;
+  }
+
 }

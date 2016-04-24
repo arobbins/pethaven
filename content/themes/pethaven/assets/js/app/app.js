@@ -12,5 +12,3 @@ Vendor.initCarousel();
 //
 componentPetFinder.loadPets();
 componentMobileMenu.init();
-
-componentMobileMenu.toggleMobileMenu();
