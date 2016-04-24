@@ -7,7 +7,7 @@
 <section class="component component-partner l-row l-row-center">
 
   <?php while($loop->have_posts()) : $loop->the_post(); ?>
-    <div class="grid-item l-col l-box-4 partner">
+    <div class="grid-item l-col l-box-3 partner">
       <a href="<?php the_field('partner_link', get_the_id()); ?>" class="partner-link">
         <img src="<?php the_field('partner_image', get_the_id()); ?>" class="partner-image">
       </a>
