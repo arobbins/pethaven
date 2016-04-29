@@ -1,6 +1,9 @@
 .facebook-event {
   width: 43%;
-  // margin-bottom: 2em;
+
+  @include respond-to(600, 'max') {
+    width: 100%;
+  }
 
   .btn {
     margin-top: 10px;
