@@ -1,12 +1,22 @@
 .facebook-event {
-  margin-bottom: 2em;
+  width: 43%;
+  // margin-bottom: 2em;
 
-  .button {
-    margin-top: 1em;
+  .btn {
+    margin-top: 10px;
+    display: inline-block;
   }
 }
 
-.facebook-event-images {
+.facebook-event-image {
   max-width: 500px;
   margin-bottom: 10px;
+}
+
+.facebook-event-desc {
+  word-break: break-word;
+}
+
+.facebook-event-date {
+  margin: 0;
 }
