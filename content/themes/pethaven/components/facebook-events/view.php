@@ -21,11 +21,13 @@
 ?>
 <div class="facebook-event">
   <a href="<?php echo $event_link; ?>">
-    <img src="<?php echo get_fbe_image('cover'); ?>" alt="" />
+    <img src="<?php echo get_fbe_image('cover'); ?>" alt="" class="facebook-event-image" />
   </a>
   <h1><?php echo $event_title; ?></h1>
-  <p>Starts: <?php echo $event_starts; ?> Ends: <?php echo $event_ends; ?></p>
+  <p><strong>Starts:</strong> <?php echo $event_starts; ?></p>
+  <p><strong>Ends:</strong> <?php echo $event_ends; ?></p>
   <p><?php echo $event_desc; ?></p>
+  <a href="<?php echo $event_link; ?>" class="button button-primary">Learn more</a>
 </div>
 <?php
     endwhile;
