@@ -73,3 +73,17 @@ function partners($atts) {
   return $content;
 }
 add_shortcode('partners', __NAMESPACE__ . '\\partners');
+
+
+/*
+
+ Facebook events shortcode
+
+*/
+function facebook_events($atts) {
+  ob_start();
+  include(locate_template('components/facebook-events/view.php'));
+  $content = ob_get_clean();
+  return $content;
+}
+add_shortcode('facebook-events', __NAMESPACE__ . '\\facebook_events');
