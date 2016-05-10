@@ -18,24 +18,27 @@
  * @package WordPress
  */
 
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
+
+// Staging
 define('DB_NAME', 'lindsi_pethaven');
-
-/** MySQL database username */
 define('DB_USER', 'lindsi_andrew');
-
-/** MySQL database password */
 define('DB_PASSWORD', 'v873%X{$g3uATGA4V}is]%ZXB*eg6+');
-
-/** MySQL hostname */
 define('DB_HOST', 'carter.asmallorange.com');
+
+// Local
+// define('DB_NAME', 'pethaven');
+// define('DB_USER', 'root');
+// define('DB_PASSWORD', 'qp05ofilterZ!@');
+// define('DB_HOST', 'localhost');
+
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
+
+
 
 /**#@+
  * Authentication Unique Keys and Salts.
