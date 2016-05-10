@@ -2,3 +2,7 @@
 [29-Apr-2016 17:59:50 UTC] PHP Fatal error:  Call to undefined function get_fbe_image() in /home/lindsi/public_html/pethaven/content/themes/pethaven/components/facebook-events/view.php on line 16
 [29-Apr-2016 17:59:55 UTC] PHP Fatal error:  Call to undefined function get_fbe_image() in /home/lindsi/public_html/pethaven/content/themes/pethaven/components/facebook-events/view.php on line 16
 [29-Apr-2016 17:59:56 UTC] PHP Fatal error:  Call to undefined function get_fbe_image() in /home/lindsi/public_html/pethaven/content/themes/pethaven/components/facebook-events/view.php on line 16
+[29-Apr-2016 21:23:12 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
+[29-Apr-2016 21:23:18 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
+[29-Apr-2016 21:23:37 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
+[29-Apr-2016 21:26:51 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42

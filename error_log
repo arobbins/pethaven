@@ -1,0 +1,7 @@
+[04-May-2016 17:46:42 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
+[04-May-2016 17:46:47 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
+[04-May-2016 17:47:06 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
+[04-May-2016 17:48:01 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
+[04-May-2016 17:48:12 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
+[04-May-2016 17:48:17 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
+[04-May-2016 17:49:24 UTC] PHP Fatal error:  Call to undefined function password_verify() in /home/lindsi/public_html/pethaven/content/mu-plugins/wp-password-bcrypt.php on line 42
