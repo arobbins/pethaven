@@ -21,12 +21,11 @@
 
       <div class="component-related-item-content">
         <?php
-          $the_query = new WP_Query( 'posts_per_page=1');
+          $the_query = new WP_Query('posts_per_page=3');
 
-          while($the_query -> have_posts()) : $the_query -> the_post();
+          while($the_query -> have_posts()) : $the_query -> the_post(); ?>
 
-            the_excerpt(); ?>
-            <a href="<?php the_permalink(); ?>">Read More</a>
+            <a href="<?php the_permalink(); ?>" class="component-related-item-heading-link"><h2 class="component-related-item-heading"><?php the_title(); ?> ...</h2></a>
 
           <?php endwhile;
 
@@ -46,13 +45,11 @@
         <?php
           $cat = get_sub_field('related_category_category');
 
-          $loop = new WP_Query(array('posts_per_page' => 1, 'category__in' => $cat));
+          $loop = new WP_Query(array('posts_per_page' => 3, 'category__in' => $cat));
 
-          while($loop -> have_posts()) : $loop -> the_post();
+          while($loop -> have_posts()) : $loop -> the_post(); ?>
 
-            the_excerpt(); ?>
-
-            <a href="<?php the_permalink(); ?>">Read More</a>
+            <a href="<?php the_permalink(); ?>" class="component-related-item-heading-link"><h2 class="component-related-item-heading"><?php the_title(); ?> ...</h2></a>
 
           <?php endwhile;
 
