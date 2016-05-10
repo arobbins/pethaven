@@ -123,9 +123,23 @@ const componentPetFinder = (() => {
           breedClasses = createBreedsList(breeds),
           petImage = createPetImage(pet);
 
-      $grid.append($("<a href='https://www.petfinder.com/petdetail/" + pet.id.$t + "' class='pet-link'><div class='grid-item " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'><strong>Breeds</strong>" + breedClasses + "</p><p class='pet-age'><strong>Age:</strong> " + pet.age.$t + "</p><p class='pet-size'><strong>Size:</strong> " + pet.size.$t + "</p></div></a>"));
+      $grid.append($("<a href='https://www.petfinder.com/petdetail/" + pet.id.$t + "' class='grid-item pet-link " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'><strong>Breeds</strong>" + breedClasses + "</p><p class='pet-age'><strong>Age:</strong> " + pet.age.$t + "</p><p class='pet-size'><strong>Size:</strong> " + pet.size.$t + "</p></a>"));
 
     });
+  };
+
+
+  //
+  // Set Animal Type
+  //
+  const setType = () => {
+    if($inputType.val().length === 0) {
+      selectedFilters.type = null;
+
+    } else {
+      selectedFilters.type = $inputType.val();
+
+    }
   };
 
 
@@ -146,10 +160,14 @@ const componentPetFinder = (() => {
       });
 
       setType();
-      filterSelection(iso);
       detectFilterEvents(iso);
+      filterSelection(iso);
+
+    } else {
+      console.log('Grid not found');
 
     }
+
   };
 
 
@@ -158,46 +176,51 @@ const componentPetFinder = (() => {
   //
   const filterSelection = (iso) => {
 
-    console.log('onload: ', selectedFilters);
+    console.log('Filter options: ', selectedFilters);
+    console.log('iso: ', iso);
 
     iso.arrange({
       filter: function(itemElem) {
 
-        var element = {
-          type: itemElem.dataset.type,
-          breeds: itemElem.dataset.breeds,
-          size: itemElem.dataset.size,
-          age: itemElem.dataset.age
-        };
+        console.log(itemElem);
 
-        // Remove the null values ...
-        var selected = _.omitBy(selectedFilters, _.isNull);
+        if(itemElem !== 0) {
+          var element = {
+            type: itemElem.dataset.type,
+            breeds: itemElem.dataset.breeds,
+            size: itemElem.dataset.size,
+            age: itemElem.dataset.age
+          };
 
-        if(selected.breeds) {
+          // Remove the null values ...
+          var selected = _.omitBy(selectedFilters, _.isNull);
 
-          if(element.breeds.indexOf(selected.breeds) > -1) {
+          if(selected.breeds) {
 
-            var elementWithoutBreeds = {
-              type: element.type,
-              age: element.age,
-              size: element.size
-            };
+            if(element.breeds.indexOf(selected.breeds) > -1) {
 
-            var selectedWithoutBreeds = {
-              type: selectedFilters.type,
-              age: selectedFilters.age,
-              size: selectedFilters.size
-            };
+              var elementWithoutBreeds = {
+                type: element.type,
+                age: element.age,
+                size: element.size
+              };
 
-            var selectedWithoutBreedsAndNull = _.omitBy(selectedWithoutBreeds, _.isNull);
+              var selectedWithoutBreeds = {
+                type: selectedFilters.type,
+                age: selectedFilters.age,
+                size: selectedFilters.size
+              };
 
-            return _.some([elementWithoutBreeds], selectedWithoutBreedsAndNull);
+              var selectedWithoutBreedsAndNull = _.omitBy(selectedWithoutBreeds, _.isNull);
+
+              return _.some([elementWithoutBreeds], selectedWithoutBreedsAndNull);
+
+            }
+
+          } else {
+            return _.some([element], selected);
 
           }
-
-        } else {
-          return _.some([element], selected);
-
         }
 
       }
@@ -230,20 +253,6 @@ const componentPetFinder = (() => {
 
     });
 
-  };
-
-
-  //
-  // Set Animal Type
-  //
-  const setType = () => {
-    if($inputType.val().length === 0) {
-      selectedFilters.type = null;
-
-    } else {
-      selectedFilters.type = $inputType.val();
-
-    }
   };
 
 

@@ -81,6 +81,7 @@ $table_prefix  = 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', false);
+define('SCRIPT_DEBUG', true);
 
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
 

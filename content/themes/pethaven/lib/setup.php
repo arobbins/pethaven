@@ -93,6 +93,18 @@ function display_sidebar() {
   return apply_filters('sage/display_sidebar', $display);
 }
 
+
+/*
+ * Removing jQuery from the front-end, using npm instead
+*/
+function remove_jquery() {
+	if (!is_admin()) {
+		wp_deregister_script('jquery');
+	}
+}
+add_action('init', __NAMESPACE__ . '\\remove_jquery', 100);
+
+
 /**
  * Theme assets
  */
@@ -119,6 +131,12 @@ function assets() {
 
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+
+
+
+
+
 
 //
 // Creating options page

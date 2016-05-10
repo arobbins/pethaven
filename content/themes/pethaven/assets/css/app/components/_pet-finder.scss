@@ -40,7 +40,8 @@
 
 .pet-link {
   display: inline-block;
-
+  text-decoration: none;
+  
   &:hover {
     cursor: pointer;
     @include dim-subtle;

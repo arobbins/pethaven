@@ -13,6 +13,14 @@
 
 .marquee-content {
   width: 50%;
+
+  @include respond-to(800, 'max') {
+    width: 80%;
+  }
+
+  @include respond-to(600, 'max') {
+    width: 90%;
+  }
 }
 
 .marquee-heading {
