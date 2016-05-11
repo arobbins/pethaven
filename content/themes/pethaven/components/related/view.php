@@ -25,7 +25,7 @@
 
           while($the_query -> have_posts()) : $the_query -> the_post(); ?>
 
-            <a href="<?php the_permalink(); ?>" class="component-related-item-heading-link"><h2 class="component-related-item-heading"><?php the_title(); ?> ...</h2></a>
+            <a href="<?php the_permalink(); ?>" class="component-related-item-heading-link"><?php the_title(); ?> ...</a>
 
           <?php endwhile;
 
@@ -49,7 +49,7 @@
 
           while($loop -> have_posts()) : $loop -> the_post(); ?>
 
-            <a href="<?php the_permalink(); ?>" class="component-related-item-heading-link"><h2 class="component-related-item-heading"><?php the_title(); ?> ...</h2></a>
+            <a href="<?php the_permalink(); ?>" class="component-related-item-heading-link"><?php the_title(); ?> ...</a>
 
           <?php endwhile;
 

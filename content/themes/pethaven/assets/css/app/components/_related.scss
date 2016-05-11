@@ -36,7 +36,9 @@
 }
 
  .component-related-item-heading-link {
-  text-decoration: none;
+  // text-decoration: none;
   display: block;
+  margin-bottom: 10px;
+  
   @include dim;
 }
