@@ -113,14 +113,11 @@ function assets() {
   /* Removing jQuery */
   if(!is_admin()) {
 
-    if(!is_page_template('template-fullwidth-gforms.php')) {
-      echo 'not fullwidth template or not admin page';
+    if(!is_page_template('template-fullwidth-jquery.php')) {
       wp_deregister_script('jquery');
     }
 
-	} else {
-    echo 'fullwidth template or admin page';
-  }
+	}
 
   /* Comments */
   if (is_single() && comments_open() && get_option('thread_comments')) {

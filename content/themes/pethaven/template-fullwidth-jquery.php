@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full Width Google Forms
+ * Template Name: Full Width Jquery
  */
 ?>
 
