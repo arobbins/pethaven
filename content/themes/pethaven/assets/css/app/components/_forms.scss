@@ -149,4 +149,36 @@ input[type=submit] {
 
 .freebirdFormviewerViewItemsItemItemTitle {
   font-weight: bold;
+  font-size: $btn-l;
+}
+
+.freebirdFormviewerViewFooterImageContainer {
+  display: none;
+}
+
+.freebirdFormviewerViewNavigationPasswordWarning {
+  display: block;
+  margin-top: 1em;
+  font-size: 14px;
+}
+
+.freebirdFormviewerViewNavigationButtonsAndProgress {
+  margin-top: 2em;
+}
+
+.quantumWizTextinputPapertextareaInput {
+  min-height: 150px;
+}
+
+.freebirdFormviewerViewHeaderTitleRow {
+  font-size: $font-l;
+}
+
+.freebirdFormviewerViewHeaderHeader {
+  margin-bottom: 2em;
+}
+
+.freebirdFormviewerViewItemsItemRequiredAsterisk,
+.freebirdFormviewerViewHeaderRequiredLegend {
+  color: red;
 }
