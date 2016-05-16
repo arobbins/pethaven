@@ -98,9 +98,8 @@ function display_sidebar() {
  * Removing jQuery from the front-end, using npm instead
 */
 function remove_jquery() {
-	if (!is_admin() && !is_page_template('template-fullwidth-gforms.php')) {
-		wp_deregister_script('jquery');
-	}
+
+
 }
 add_action('init', __NAMESPACE__ . '\\remove_jquery', 100);
 
@@ -109,6 +108,14 @@ add_action('init', __NAMESPACE__ . '\\remove_jquery', 100);
  * Theme assets
  */
 function assets() {
+
+  /* Removing jQuery */
+  if(!is_page_template('template-fullwidth-gforms.php') || !is_admin()) {
+    echo 'not fullwidth template or not admin page';
+		wp_deregister_script('jquery');
+	} else {
+    echo 'fullwidth template or admin page';
+  }
 
   /* Comments */
   if (is_single() && comments_open() && get_option('thread_comments')) {
