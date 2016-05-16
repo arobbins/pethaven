@@ -23,6 +23,28 @@
   margin: 1em 0 1em 0;
 }
 
+label[for="breed"] {
+  float: left;
+  margin-right: 8px;
+  margin-top: 8px;
+
+  @include respond-to(600, 'max') {
+    display: block;
+    width: 100%;
+  }
+}
+
+.component-pet-finder-filter-breed {
+  display: inline-block;
+  float: left;
+  width: 75%;
+
+  @include respond-to(600, 'max') {
+    display: block;
+    width: 100%;
+  }
+}
+
 .grid-item {
   padding: 10px;
   margin: 20px;
@@ -41,7 +63,7 @@
 .pet-link {
   display: inline-block;
   text-decoration: none;
-  
+
   &:hover {
     cursor: pointer;
     @include dim-subtle;
