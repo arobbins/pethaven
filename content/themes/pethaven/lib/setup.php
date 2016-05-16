@@ -102,7 +102,7 @@ function remove_jquery() {
 		wp_deregister_script('jquery');
 	}
 }
-add_action('init', __NAMESPACE__ . '\\remove_jquery', 100);
+// add_action('init', __NAMESPACE__ . '\\remove_jquery', 100);
 
 
 /**
