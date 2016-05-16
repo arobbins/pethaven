@@ -87,7 +87,8 @@ function display_sidebar() {
     // @link https://codex.wordpress.org/Conditional_Tags
     is_404(),
     is_front_page(),
-    is_page_template('template-fullwidth.php')
+    is_page_template('template-fullwidth.php'),
+    is_page_template('template-fullwidth-gforms.php')
   ]);
 
   return apply_filters('sage/display_sidebar', $display);
@@ -110,9 +111,13 @@ add_action('init', __NAMESPACE__ . '\\remove_jquery', 100);
 function assets() {
 
   /* Removing jQuery */
-  if(!is_page_template('template-fullwidth-gforms.php') || !is_admin()) {
-    echo 'not fullwidth template or not admin page';
-		wp_deregister_script('jquery');
+  if(!is_admin()) {
+
+    if(!is_page_template('template-fullwidth-gforms.php')) {
+      echo 'not fullwidth template or not admin page';
+      wp_deregister_script('jquery');
+    }
+
 	} else {
     echo 'fullwidth template or admin page';
   }
