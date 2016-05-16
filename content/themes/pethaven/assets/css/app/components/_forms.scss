@@ -42,6 +42,7 @@ textarea,
 input {
   color: #333;
   padding: 0.5em;
+  width: 100%;
 }
 
 .gform_wrapper input.datepicker.datepicker_with_icon {
@@ -140,4 +141,12 @@ input[type=submit] {
   margin-bottom: 1em;
   margin-top: 0;
   padding-top: 0;
+}
+
+.freebirdFormviewerViewItemsItemItem {
+  margin-bottom: 1em;
+}
+
+.freebirdFormviewerViewItemsItemItemTitle {
+  font-weight: bold;
 }
