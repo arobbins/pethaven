@@ -98,7 +98,7 @@ function display_sidebar() {
  * Removing jQuery from the front-end, using npm instead
 */
 function remove_jquery() {
-	if (!is_admin()) {
+	if (!is_admin() && !is_page_template('template-fullwidth-gforms.php')) {
 		wp_deregister_script('jquery');
 	}
 }
