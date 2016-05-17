@@ -2,7 +2,8 @@
 span.btn,
 .nav-previous a,
 .nav-next a,
-.quantumWizButtonPaperbuttonLabel {
+.quantumWizButtonPaperbuttonLabel,
+.menu-secondary .menu-item a {
   color: white;
   padding: rem($space-s) rem($space-m);
   font-size: $btn-s;
