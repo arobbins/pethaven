@@ -93,7 +93,6 @@
     display: inline-block;
     font-size: $font-xs;
     font-family: $font-secondary;
-    // font-weight: bold;
 
     &:hover {
       @include dim;
@@ -157,6 +156,10 @@
   .menu-item a {
     color: white;
     padding: 15px 20px;
+
+    &:hover {
+      color: color(highlight);
+    }
   }
 }
 
