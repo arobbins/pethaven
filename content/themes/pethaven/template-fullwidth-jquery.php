@@ -1,7 +1,5 @@
 <?php
-/**
- * Template Name: Full Width Jquery
- */
+
 ?>
 
 <?php while (have_posts()) : the_post(); ?>

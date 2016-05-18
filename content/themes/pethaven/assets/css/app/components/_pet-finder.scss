@@ -46,7 +46,7 @@ label[for="breed"] {
 }
 
 .grid-item {
-  padding: 10px;
+  padding: 20px;
   margin: 20px;
   border: 1px solid #e6e6e6;
   box-shadow: 0 1px 3px rgba(0,0,0,.23);
@@ -59,6 +59,7 @@ label[for="breed"] {
     // @include dim-subtle;
   }
 }
+
 
 .pet-link {
   display: inline-block;
