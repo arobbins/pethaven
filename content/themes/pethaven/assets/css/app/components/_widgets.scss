@@ -32,6 +32,27 @@
   .social-link {
     margin-right: 10px;
   }
+
+  .mc4wp-form {
+    margin-top: 1em;
+
+    label {
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input[type="email"] {
+      border: nome;
+    }
+
+    input[type="submit"] {
+      margin-top: 10px;
+    }
+  }
+
+  .social-links {
+    margin-left: 0;
+  }
 }
 
 .sidebar .widget h3 {

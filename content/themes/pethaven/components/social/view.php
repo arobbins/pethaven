@@ -2,9 +2,9 @@
   include('controller.php');
 
   // check if the repeater field has rows of data
-  if(have_rows('theme_social', 'option') ):
-
-    // loop through the rows of data
+  if(have_rows('theme_social', 'option') ): ?>
+    <div class="social-links">
+    <?php // loop through the rows of data
     while ( have_rows('theme_social', 'option') ) : the_row(); ?>
 
       <a href="<?php the_sub_field('social_link'); ?>" class="social-link">
@@ -16,7 +16,7 @@
   else :
 
     // no rows found
-
+    ?> </div> <?php
   endif;
 
 ?>
