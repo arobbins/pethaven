@@ -3,7 +3,10 @@ span.btn,
 .nav-previous a,
 .nav-next a,
 .quantumWizButtonPaperbuttonLabel,
-.menu-secondary .menu-item a {
+.menu-secondary .menu-item a,
+input[type="submit"],
+.jfk-button,
+.jfk-button-action {
   color: white;
   padding: rem($space-s) rem($space-m);
   font-size: $btn-s;
