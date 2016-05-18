@@ -87,9 +87,19 @@ select {
   .errorheader {
     margin: 2em 0;
     color: red;
-  }  
+  }
 }
 
+.ss-response-footer {
+  display: none;
+}
+
+.ss-resp-message {
+  margin: 1em 0;
+  background-color: rgba(136, 228, 67, 0.39);
+  color: color(primary);
+  padding: 1em;
+}
 
 .form-group {}
 .form-control {}
