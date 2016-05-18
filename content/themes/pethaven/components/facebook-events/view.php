@@ -14,7 +14,7 @@
 
     if($fbe_query->have_posts()):
       while($fbe_query->have_posts()) : $fbe_query->the_post();
-
+        print_r($fbe_query);
         $event_title = get_the_title();
         $event_desc =  get_the_content();
         $event_image = get_fbe_image('cover');
