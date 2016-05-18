@@ -1,7 +1,5 @@
 <?php get_template_part('templates/page', 'header'); ?>
 
-<h1>Hello</h1>
-
 <div class="alert alert-warning">
   <?php _e('Sorry, but the page you were trying to view does not exist.', 'sage'); ?>
 </div>
