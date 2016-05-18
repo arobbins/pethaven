@@ -4,10 +4,17 @@
     $now = date_create();
     $now = date_timestamp_get($now);
 
-    $args = array(
+    $args = array (
       'post_type' => 'facebook_events',
       'posts_per_page' => -1,
-      'order' => 'ASC'
+      'orderby' => 'meta_value',
+      'order' => 'ASC',
+      'meta_query' => array(
+        array(
+          'key' => 'event_starts',
+          'compare' => 'LIKE',
+        )
+      )
     );
 
     $fbe_query = new WP_Query($args);
