@@ -53,6 +53,26 @@ select {
 
   }
 
+  input[type="submit"] {
+    color: white;
+    padding: rem($space-s) rem($space-m);
+    font-size: $btn-s;
+    background-color: color(highlight);
+    font-family: $font-primary;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid color(highlight);
+
+    &:hover {
+      background-color: transparent;
+      color: color(highlight);
+    }
+  }
+
+  td.goog-inline-block:first-child {
+    padding-left: 0;
+  }
+
 }
 
 
