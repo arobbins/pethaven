@@ -25,6 +25,8 @@ select {
   }
 
   input[type="radio"],
+  input[type="checkbox"],
+  input[type="checkbox"] + .ss-choice-label,
   input[type="radio"] + .ss-choice-label {
     display: inline;
     width: auto !important;
@@ -75,7 +77,12 @@ select {
   }
 
   div.ss-form-heading {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
+  }
+
+  .errorheader {
+    margin: 2em 0;
+    color: red;
   }
 
 }
