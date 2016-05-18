@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full Width Without jQuery
+ * Template Name: Full Width (Pet Finder only)
  */
 ?>
 
