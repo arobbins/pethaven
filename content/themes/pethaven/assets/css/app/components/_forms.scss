@@ -102,6 +102,23 @@ select {
   }
 }
 
+.mc4wp-error,
+.mc4wp-success {
+  margin: 1em 0;
+  color: color(primary);
+  padding: 1em;
+}
+
+
+.mc4wp-error {
+  background-color: #f5b8c2;
+}
+
+.mc4wp-success {
+  background-color: rgba(136, 228, 67, 0.39);
+}
+
+
 .form-group {}
 .form-control {}
 
