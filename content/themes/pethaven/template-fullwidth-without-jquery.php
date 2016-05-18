@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full Width Jquery
+ * Template Name: Full Width Without jQuery
  */
 ?>
 

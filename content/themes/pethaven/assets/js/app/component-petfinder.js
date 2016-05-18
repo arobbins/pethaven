@@ -176,13 +176,8 @@ const componentPetFinder = (() => {
   //
   const filterSelection = (iso) => {
 
-    console.log('Filter options: ', selectedFilters);
-    console.log('iso: ', iso);
-
     iso.arrange({
       filter: function(itemElem) {
-
-        console.log(itemElem);
 
         if(itemElem !== 0) {
           var element = {

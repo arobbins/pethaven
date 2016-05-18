@@ -14,6 +14,7 @@ function setup() {
   add_theme_support('soil-nav-walker');
   add_theme_support('soil-nice-search');
   add_theme_support('soil-relative-urls');
+  add_theme_support('soil-jquery-cdn');
 
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
@@ -87,23 +88,12 @@ function display_sidebar() {
     // The sidebar will NOT be displayed if ANY of the following return true.
     is_404(),
     is_front_page(),
-    is_page_template('template-fullwidth.php'),
-    is_page_template('template-fullwidth-jquery.php')
-    
+    is_page_template('template-fullwidth.php')
+
   ]);
 
   return apply_filters('sage/display_sidebar', $display);
 }
-
-
-/*
- * Removing jQuery from the front-end, using npm instead
-*/
-function remove_jquery() {
-
-
-}
-add_action('init', __NAMESPACE__ . '\\remove_jquery', 100);
 
 
 /**
@@ -114,7 +104,7 @@ function assets() {
   /* Removing jQuery */
   if(!is_admin()) {
 
-    if(!is_page_template('template-fullwidth-jquery.php')) {
+    if(is_page_template('template-fullwidth-without-jquery.php')) {
       wp_deregister_script('jquery');
     }
 
