@@ -62,6 +62,7 @@ select {
     text-transform: uppercase;
     text-decoration: none;
     border: 2px solid color(highlight);
+    width: auto;
 
     &:hover {
       background-color: transparent;
@@ -71,6 +72,10 @@ select {
 
   td.goog-inline-block:first-child {
     padding-left: 0;
+  }
+
+  div.ss-form-heading {
+    margin-bottom: 1em;
   }
 
 }
