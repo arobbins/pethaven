@@ -7,40 +7,54 @@ select {
 
 }
 
-#ss-form ol,
-#ss-form ul {
-  margin-left: 0;
-  padding-left: 0;
+#ss-form {
+
+  ol,
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .ss-q-title {
+    font-weight: bold;
+  }
+
+  div.error-message {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+
+  input[type="radio"],
+  input[type="radio"] + .ss-choice-label {
+    display: inline;
+    width: auto !important;
+  }
+
+  .ss-form-question {
+    margin-bottom: 1em;
+  }
+
+  .ss-q-item-label {
+    margin-bottom: 5px;
+    display: block;
+    margin-left: 2px;
+  }
+
+  .ss-required-asterisk {
+    color: red;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #bdbdbd;
+
+  }
+
 }
 
-.ss-q-title {
-  font-weight: bold;
-}
-
-div.error-message {
-  margin-top: 5px;
-  font-size: 14px;
-}
-
-input[type="radio"],
-input[type="radio"] + .ss-choice-label {
-  display: inline;
-  width: auto !important;
-}
-
-.ss-form-question {
-  margin-bottom: 1em;
-}
-
-.ss-q-item-label {
-  margin-bottom: 5px;
-  display: block;
-  margin-left: 2px;
-}
-
-.ss-required-asterisk {
-  color: red;
-}
 
 .form-group {}
 .form-control {}
