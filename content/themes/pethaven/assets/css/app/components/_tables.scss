@@ -3,7 +3,7 @@ table {
 }
 
 thead {
-  background-color: color(primary);
+  background-color: color(greyLight);
 }
 
 td, th {
@@ -28,7 +28,7 @@ td:nth-child(even) {}
 
 tr {
   &:nth-child(even) {
-    background-color: color(primary);
+    background-color: color(greyLight);
 
     @include respond-to(500, 'max') {
       min-width: auto;
