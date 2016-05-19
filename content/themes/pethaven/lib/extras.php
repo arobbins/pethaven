@@ -96,8 +96,8 @@ add_shortcode('facebook-events', __NAMESPACE__ . '\\facebook_events');
 
 */
 function limit_archives($args) {
-  $args['limit'] = 10;
+  $args['limit'] = 12;
   return $args;
 }
-add_filter('widget_archives_args', 'limit_archives');
-add_filter('widget_archives_dropdown_args', 'limit_archives');
+add_filter('widget_archives_args', __NAMESPACE__ . '\\limit_archives');
+add_filter('widget_archives_dropdown_args', __NAMESPACE__ . '\\limit_archives');
