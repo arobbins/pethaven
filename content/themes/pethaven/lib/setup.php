@@ -126,6 +126,7 @@ function assets() {
     wp_enqueue_style('slick-slider', '//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css', false, null);
 
     /* JS */
+    wp_enqueue_script('modernizr', Assets\asset_path('assets/js/vendor/modernizr-custom.js'), [], null, true);
     wp_enqueue_script('js-vendor', Assets\asset_path('assets/js/vendor.min.js'), [], null, true);
     wp_enqueue_script('js', Assets\asset_path('assets/js/app.min.js'), [], null, true);
 

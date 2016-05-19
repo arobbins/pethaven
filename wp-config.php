@@ -20,16 +20,16 @@
 
 
 // Staging
-define('DB_NAME', 'lindsi_pethaven');
-define('DB_USER', 'lindsi_andrew');
-define('DB_PASSWORD', 'v873%X{$g3uATGA4V}is]%ZXB*eg6+');
-define('DB_HOST', 'carter.asmallorange.com');
+// define('DB_NAME', 'lindsi_pethaven');
+// define('DB_USER', 'lindsi_andrew');
+// define('DB_PASSWORD', 'v873%X{$g3uATGA4V}is]%ZXB*eg6+');
+// define('DB_HOST', 'carter.asmallorange.com');
 
 // Local
-// define('DB_NAME', 'pethaven');
-// define('DB_USER', 'root');
-// define('DB_PASSWORD', 'qp05ofilterZ!@');
-// define('DB_HOST', 'localhost');
+define('DB_NAME', 'pethaven');
+define('DB_USER', 'root');
+define('DB_PASSWORD', 'qp05ofilterZ!@');
+define('DB_HOST', 'localhost');
 
 
 /** Database Charset to use in creating database tables. */
