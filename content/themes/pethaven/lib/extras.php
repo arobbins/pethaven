@@ -87,3 +87,17 @@ function facebook_events($atts) {
   return $content;
 }
 add_shortcode('facebook-events', __NAMESPACE__ . '\\facebook_events');
+
+
+
+/*
+
+  Limit Archive Widget Months
+
+*/
+function limit_archives($args) {
+  $args['limit'] = 10;
+  return $args;
+}
+add_filter('widget_archives_args', 'limit_archives');
+add_filter('widget_archives_dropdown_args', 'limit_archives');
