@@ -20,43 +20,15 @@
   @include shadow-subtle;
 }
 
-.highlight {
-
-  // &:first-child {
-  //   margin-left: 0;
-  // }
-  //
-  // &:last-child {
-  //   margin-right: 0;
-  // }
-  //
-  // @include respond-to(800, 'max') {
-  //   &:last-child,
-  //   &:first-child {
-  //     margin: .5em 1em;
-  //   }
-  // }
-  //
-  // @include respond-to(600, 'max') {
-  //   &:last-child,
-  //   &:first-child {
-  //     margin: .5em 1em;
-  //   }
-  // }
-  //
-  // @include respond-to(500, 'max') {
-  //   &:last-child,
-  //   &:first-child {
-  //     margin: .5em 1em;
-  //   }
-  // }
-}
-
 .highlight-title {
   font-size: $font-xs + 3px;
   padding: 1em 1em 0 1em;
   text-align: center;
   min-height: 85px;
+
+  @include respond-to(800, 'max') {
+    min-height: 0;
+  }
 }
 
 .highlight-icon {
