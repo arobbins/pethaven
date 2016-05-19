@@ -63,6 +63,10 @@ label[for="breed"] {
     // cursor: pointer;
     // @include dim-subtle;
   }
+
+  @include respond-to(500, 'max') {
+    margin: 0 0 2em 0;
+  }
 }
 
 

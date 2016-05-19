@@ -20,6 +20,8 @@
 
   @include respond-to(600, 'max') {
     width: 90%;
+    position: relative;
+    top: -40px;
   }
 }
 

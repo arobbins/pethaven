@@ -68,7 +68,17 @@ a {
     color: lighten(color(highlight), 20);
     cursor: pointer;
   }
+
+  &[href^=tel] {
+    @include respond-to(500, 'max') {
+      text-align: right;
+      display: block;
+      width: 100%;
+    }
+  }
 }
+
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-primary;
@@ -160,4 +170,8 @@ blockquote {
     max-width: 190px;
   }
 
+}
+
+img {
+  max-width: 100%;
 }

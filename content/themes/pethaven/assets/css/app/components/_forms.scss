@@ -106,6 +106,12 @@ select {
 
 }
 
+.mc4wp-form {
+  @include respond-to(500, 'max') {
+    width: 100%;
+  }
+}
+
 .mc4wp-error,
 .mc4wp-success {
   margin: 1em 0;
