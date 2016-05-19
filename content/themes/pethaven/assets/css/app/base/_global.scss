@@ -50,6 +50,10 @@ ul, ol, dl {
   margin: rem($space-s) 0 rem($space-s) rem($space-s);
 }
 
+ul {
+  list-style: square;
+}
+
 p {
   font-family: $font-secondary;
 }
@@ -62,6 +66,7 @@ a {
 
   &:hover {
     color: lighten(color(highlight), 20);
+    cursor: pointer;
   }
 }
 
