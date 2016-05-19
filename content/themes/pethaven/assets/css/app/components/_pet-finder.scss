@@ -54,6 +54,11 @@ label[for="breed"] {
 
   @include shadow-subtle;
 
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+
   &:hover {
     // cursor: pointer;
     // @include dim-subtle;
