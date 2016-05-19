@@ -30,10 +30,6 @@
   max-width: $container-width;
   padding: 2em 1em;
 
-  img {
-    width: 100%;
-  }
-
   @include respond-to(700, 'max') {
     flex-direction: column-reverse;
   }
