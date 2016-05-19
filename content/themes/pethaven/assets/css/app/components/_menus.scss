@@ -155,11 +155,18 @@
 .menu.menu-secondary {
   .menu-item a {
     color: white;
-    padding: 15px 20px;
+    padding: rem($space-s) rem($space-m);
+    font-size: $btn-s;
+    background-color: color(highlight);
+    font-family: $font-primary;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid color(highlight);
 
     &:hover {
-      color: color(highlight);
       cursor: pointer;
+      background-color: transparent;
+      color: color(highlight);
     }
   }
 }
