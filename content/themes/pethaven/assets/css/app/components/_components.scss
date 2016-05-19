@@ -4,4 +4,8 @@
 
 .component {
   padding: 4em 0;
+
+  @include respond-to(800, 'max') {
+    padding: 3em 0;
+  }
 }

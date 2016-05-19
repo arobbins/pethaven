@@ -18,6 +18,11 @@
   background-color: white;
 
   @include shadow-subtle;
+
+  @include respond-to(800, 'max') {
+    margin-bottom: 1.5em;
+  }
+
 }
 
 .highlight-title {
