@@ -2,3 +2,4 @@ node_modules
 npm-debug.log
 wp-config.php
 content/uploads
+.DS_Store

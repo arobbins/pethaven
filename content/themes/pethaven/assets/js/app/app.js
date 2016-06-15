@@ -1,14 +1,8 @@
 import Vendor from './vendor';
-import componentPetFinder from './component-petfinder';
-import componentMobileMenu from './component-mobile-menu';
+import PF from './component-petfinder';
+import mobileMenu from './component-mobile-menu';
 
-//
-// Slick Carousel
-//
+// Initializing ...
+mobileMenu.init();
 Vendor.initCarousel();
-
-//
-// Components
-//
-componentPetFinder.loadPets();
-componentMobileMenu.init();
+PF.loadPets();

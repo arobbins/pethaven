@@ -60,6 +60,7 @@
 
     <div class="spinner"></div>
     <div class="msg msg-notice">No pets found. Please choose a different filtering option or click reset.</div>
+    
     <section class="component-pet-finder-grid"></section>
 
   </div>

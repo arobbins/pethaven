@@ -12,7 +12,7 @@ const config = {
       '!./assets/js/vendor.min.js',
       '!./assets/js/app.min.js.map'
     ],
-    jsEntry: './assets/js/app/app.js',
+    jsEntry: './assets/js/app/app.js', // Entry file
     css: './assets/css/**/*.scss',
     cssEntry: './assets/css/app/app.scss'
   },

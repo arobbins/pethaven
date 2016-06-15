@@ -28,7 +28,7 @@
 
 .main {
   max-width: $container-width;
-  padding: 2em 1em;
+  padding: 2em 1em;  
 
   @include respond-to(700, 'max') {
     flex-direction: column-reverse;

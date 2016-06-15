@@ -40,7 +40,7 @@ const PF = (function() {
   //
   const getPets = function() {
 
-    var url = endpoint + methodFindPets + '?key=' + APIkey + '&id=' + shelterID + '&format=' + format + '&callback=?';
+    var url = endpoint + methodFindPets + '?key=' + APIkey + '&id=' + shelterID + '&count=1000' + '&format=' + format + '&callback=?';
 
     return $.ajax({
       url: url,

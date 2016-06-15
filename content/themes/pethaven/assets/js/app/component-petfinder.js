@@ -339,9 +339,7 @@ const componentPetFinder = (() => {
   };
 
   return {
-    loadPets: loadPets,
-    initGrid: initGrid,
-    detectFilterEvents: detectFilterEvents
+    loadPets: loadPets
   };
 
 })();
