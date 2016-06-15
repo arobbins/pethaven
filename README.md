@@ -3,6 +3,6 @@
 
 # Installation:
 - clone repository
-- cd into folder
+- cd into `content/themes/pethaven`
 - Run `npm install`
 - Run `gulp`

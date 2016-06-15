@@ -26,10 +26,10 @@
 // define('DB_HOST', 'carter.asmallorange.com');
 
 // Local
-define('DB_NAME', 'XXXXXXX');
-define('DB_USER', 'XXXXXXX');
-define('DB_PASSWORD', 'XXXXXXX');
-define('DB_HOST', 'XXXXXXX');
+define('DB_NAME', 'pethaven');
+define('DB_USER', 'root');
+define('DB_PASSWORD', 'qp05ofilterZ!@');
+define('DB_HOST', 'localhost');
 
 
 /** Database Charset to use in creating database tables. */
