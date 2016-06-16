@@ -123,7 +123,7 @@ const componentPetFinder = (() => {
           breedClasses = createBreedsList(breeds),
           petImage = createPetImage(pet);
 
-      $grid.append($("<a href='https://www.petfinder.com/petdetail/" + pet.id.$t + "' class='grid-item pet-link " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'><strong>Breeds</strong>" + breedClasses + "</p><p class='pet-age'><strong>Age:</strong> " + pet.age.$t + "</p><p class='pet-size'><strong>Size:</strong> " + pet.size.$t + "</p></a>"));
+      $grid.append($("<a href='https://www.petfinder.com/petdetail/" + pet.id.$t + "' class='grid-item pet-link " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "' target='_blank'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'><strong>Breeds</strong>" + breedClasses + "</p><p class='pet-age'><strong>Age:</strong> " + pet.age.$t + "</p><p class='pet-size'><strong>Size:</strong> " + pet.size.$t + "</p></a>"));
 
     });
   };

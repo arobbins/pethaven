@@ -25,12 +25,12 @@
         $event_desc =  get_the_content();
         $event_image = get_fbe_image('cover');
         $event_link = get_fbe_field('fb_event_uri');
+        $event_ticket_link = get_fbe_field('ticket_uri');
         $event_starts = get_fbe_date('event_starts','M j, Y @ g:i a');
         $event_ends = get_fbe_date('event_ends','M j, Y @ g:i a');
 
         $then = get_fbe_date('event_starts','M j, Y, g:i a');
         $then = strtotime($then);
-
   ?>
 
   <?php if($now <= $then) { ?>
@@ -44,6 +44,10 @@
       <p class="facebook-event-date"><strong>Ends:</strong> <?php echo $event_ends; ?></p>
       <p class="facebook-event-desc"><?php echo $event_desc; ?></p>
       <a href="<?php echo $event_link; ?>" class="btn btn-secondary">Learn more</a>
+      <?php if($event_ticket_link) { ?>
+        <a href="<?php echo $event_ticket_link; ?>" class="btn btn-secondary">Get tickets</a>
+      <?php } ?>
+
     </div>
   <?php
 
