@@ -3,7 +3,7 @@ import Rx from 'rx';
 
 const PF = (function() {
 
-  let endpoint = 'http://api.petfinder.com';
+  let endpoint = 'https://api.petfinder.com';
   let methodBreedList = '/breed.list';
   let methodFindPets = '/shelter.getPets';
   let shelterID = 'MN36';
