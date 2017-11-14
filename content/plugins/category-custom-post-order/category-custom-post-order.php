@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Posts Order
- * Version: 1.4.3
+ * Version: 1.4.4
  * Plugin URI: http://potrebka.pl/
  * Description: Order posts separately for each taxonomy
  * Author: Piotr Potrebka

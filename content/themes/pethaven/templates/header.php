@@ -6,23 +6,28 @@
     <nav class="l-col l-row-right l-fill nav-primary">
 
       <div class="l-row l-row-right l-col-center">
+
         <?php
+
         if (has_nav_menu('secondary_navigation')) :
           wp_nav_menu(['theme_location' => 'secondary_navigation', 'menu_class' => 'menu menu-secondary l-box l-row l-row-right']);
         endif;
+
         ?>
+
         <div class="social-links">
           <?php echo do_shortcode("[social type='primary']"); ?>
         </div>
+        
       </div>
 
-      <div class="">
-        <?php
-        if (has_nav_menu('primary_navigation')) :
-          wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'menu menu-primary l-row l-row-right']);
-        endif;
-        ?>
-      </div>
+      <?php
+
+      if (has_nav_menu('primary_navigation')) :
+        wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'menu menu-primary l-row l-row-right']);
+      endif;
+
+      ?>
 
     </nav>
 

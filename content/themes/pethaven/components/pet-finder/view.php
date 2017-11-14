@@ -9,8 +9,10 @@
     <form class="component-pet-finder-filter l-row l-row-center l-col-center" action="" method="post">
 
       <div class="form-control-inline">
+
         <label for="type">Animal</label>
         <select class="component-pet-finder-filter-type" name="type">
+
           <?php
 
           if( have_rows('theme_petfinder_animal_types', 'option') ):
@@ -25,6 +27,7 @@
           ?>
 
         </select>
+
       </div>
 
       <div class="form-control-inline">
@@ -59,8 +62,8 @@
     </form>
 
     <div class="spinner"></div>
-    <div class="msg msg-notice">No pets found. Please choose a different filtering option or click reset.</div>
-    
+    <div class="msg msg-notice">No pets found. Please choose a different filtering option or click clear.</div>
+
     <section class="component-pet-finder-grid"></section>
 
   </div>

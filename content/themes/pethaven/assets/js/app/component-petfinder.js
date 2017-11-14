@@ -1,23 +1,22 @@
-import $ from 'jquery';
-import Isotope from 'isotope-layout';
+// import Isotope from 'isotope-layout';
 import PF from './petfinder';
 import Rx from 'rx';
-import imagesloaded from 'imagesloaded';
+// import imagesloaded from 'imagesloaded';
 import _ from 'lodash';
 import Utils from './utils';
 
 const componentPetFinder = (() => {
 
-  var $grid = $('.component-pet-finder-grid'),
-      $gridContainer = $('.component-pet-finder'),
-      $spinner = $('.component-pet-finder .spinner'),
-      $inputZipcode = $('.component-pet-finder-filter-zipcode'),
-      $inputType = $('.component-pet-finder-filter-type'),
-      $inputBreeds = $('.component-pet-finder-filter-breed'),
-      $inputSize = $('.component-pet-finder-filter-size'),
-      $inputAge = $('.component-pet-finder-filter-age'),
-      $buttonClear = $('.component-pet-finder-filter-clear'),
-      $msg = $('.component-pet-finder .msg'),
+  var $grid = jQuery('.component-pet-finder-grid'),
+      $gridContainer = jQuery('.component-pet-finder'),
+      $spinner = jQuery('.component-pet-finder .spinner'),
+      $inputZipcode = jQuery('.component-pet-finder-filter-zipcode'),
+      $inputType = jQuery('.component-pet-finder-filter-type'),
+      $inputBreeds = jQuery('.component-pet-finder-filter-breed'),
+      $inputSize = jQuery('.component-pet-finder-filter-size'),
+      $inputAge = jQuery('.component-pet-finder-filter-age'),
+      $buttonClear = jQuery('.component-pet-finder-filter-clear'),
+      $msg = jQuery('.component-pet-finder .msg'),
       selectedFilters = {
         type: null,
         breeds: null,
@@ -30,28 +29,59 @@ const componentPetFinder = (() => {
   //
   const loadPets = () => {
 
-    Rx.Observable.fromPromise(PF.getPets()).subscribe(
-      (pets) => {
+    if($grid.length) {
 
-        insertPetsIntoDOM(pets.petfinder.pets.pet);
+      Rx.Observable.fromPromise(PF.getPets()).subscribe(
 
-        new imagesloaded('.component-pet-finder-grid', () => {
+        pets => {
 
-          if(!$grid.hasClass('is-visible')) {
-            $grid.addClass('is-visible');
-          }
+          insertPetsIntoDOM(pets.petfinder.pets.pet);
 
-          initGrid();
 
-        });
 
-      },
 
-      (error) => {
-        console.log('Error', error);
-      }
+          $grid.imagesLoaded( function() {
 
-    );
+            jQuery('.component-pet-finder .spinner').addClass('is-hidden');
+
+            if (!$grid.hasClass('is-visible')) {
+              $grid.addClass('is-visible');
+            }
+
+            initGrid();
+
+          });
+
+
+
+          // new imagesloaded('.component-pet-finder-grid', () => {
+          //
+          //   jQuery('.component-pet-finder .spinner').addClass('is-hidden');
+          //
+          //   console.log("Images loaded ...");
+          //
+          //   if (!$grid.hasClass('is-visible')) {
+          //     $grid.addClass('is-visible');
+          //   }
+          //
+          //   initGrid();
+          //
+          // });
+
+
+
+
+        },
+
+        error => {
+          console.log("Error: ", error);
+        }
+
+      );
+
+    } else {
+      // console.log('NOT loading pets ...');
+    }
 
   };
 
@@ -59,7 +89,7 @@ const componentPetFinder = (() => {
   //
   // Clear filter
   //
-  const clearFilters = (iso) => {
+  const clearFilters = iso => {
 
     $inputType.prop('selectedIndex', 0);
     $inputSize.prop('selectedIndex', 0);
@@ -73,8 +103,8 @@ const componentPetFinder = (() => {
       age: null
     };
 
-    iso.arrange({
-      filter: function(itemElem) {
+    iso.isotope({
+      filter: function() {
         return true;
       }
     });
@@ -89,7 +119,7 @@ const componentPetFinder = (() => {
     var breedClasses = '';
 
     if(breeds.length) {
-      $.each(breeds, (index, breed) => {
+      jQuery.each(breeds, (index, breed) => {
         if(breed.$t) {
           breedClasses = breedClasses += ' ' + breed.$t.toLowerCase();
         }
@@ -116,14 +146,15 @@ const componentPetFinder = (() => {
   //
   // Insert Pets Into Grid
   //
-  const insertPetsIntoDOM = (pets) => {
-    $.each(pets, (key, pet) => {
+  const insertPetsIntoDOM = pets => {
+
+    jQuery.each(pets, (key, pet) => {
 
       var breeds = pet.breeds.breed,
           breedClasses = createBreedsList(breeds),
           petImage = createPetImage(pet);
 
-      $grid.append($("<a href='https://www.petfinder.com/petdetail/" + pet.id.$t + "' class='grid-item pet-link " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "' target='_blank'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'><strong>Breeds</strong>" + breedClasses + "</p><p class='pet-age'><strong>Age:</strong> " + pet.age.$t + "</p><p class='pet-size'><strong>Size:</strong> " + pet.size.$t + "</p></a>"));
+      $grid.append(jQuery("<a href='https://www.petfinder.com/petdetail/" + pet.id.$t + "' class='grid-item pet-link " + breedClasses + "' data-type='" + pet.animal.$t + "' data-breeds='" + breedClasses + "' data-size='" + pet.size.$t + "' data-age='" + pet.age.$t + "' target='_blank'><img src=" + petImage + " class='pet-image'><h4 class='pet-name'>" + pet.name.$t + "</h4><p class='pet-breed'><strong>Breeds</strong>" + breedClasses + "</p><p class='pet-age'><strong>Age:</strong> " + pet.age.$t + "</p><p class='pet-size'><strong>Size:</strong> " + pet.size.$t + "</p></a>"));
 
     });
   };
@@ -133,7 +164,8 @@ const componentPetFinder = (() => {
   // Set Animal Type
   //
   const setType = () => {
-    if($inputType.val().length === 0) {
+
+    if ($inputType.val().length === 0) {
       selectedFilters.type = null;
 
     } else {
@@ -148,9 +180,9 @@ const componentPetFinder = (() => {
   //
   const initGrid = () => {
 
-    if($('.component-pet-finder-grid').length) {
+    if (jQuery('.component-pet-finder-grid').length) {
 
-      var iso = new Isotope('.component-pet-finder-grid', {
+      const iso = jQuery('.component-pet-finder-grid').isotope({
         itemSelector: '.grid-item',
         percentPosition: true,
         masonry: {
@@ -163,62 +195,140 @@ const componentPetFinder = (() => {
       detectFilterEvents(iso);
       filterSelection(iso);
 
-    } else {
-      console.log('Grid not found');
-
     }
 
   };
 
 
-  //
-  // Filter Selection
-  //
-  const filterSelection = (iso) => {
 
-    iso.arrange({
-      filter: function(itemElem) {
 
-        if(itemElem !== 0) {
-          var element = {
-            type: itemElem.dataset.type,
-            breeds: itemElem.dataset.breeds,
-            size: itemElem.dataset.size,
-            age: itemElem.dataset.age
-          };
 
-          // Remove the null values ...
-          var selected = _.omitBy(selectedFilters, _.isNull);
 
-          if(selected.breeds) {
 
-            if(element.breeds.indexOf(selected.breeds) > -1) {
+  function constructFilterClass(selectedOptions) {
 
-              var elementWithoutBreeds = {
-                type: element.type,
-                age: element.age,
-                size: element.size
-              };
+    var result = '';
 
-              var selectedWithoutBreeds = {
-                type: selectedFilters.type,
-                age: selectedFilters.age,
-                size: selectedFilters.size
-              };
+    for (var option in selectedOptions) {
 
-              var selectedWithoutBreedsAndNull = _.omitBy(selectedWithoutBreeds, _.isNull);
+      if (selectedOptions.hasOwnProperty(option)) {
 
-              return _.some([elementWithoutBreeds], selectedWithoutBreedsAndNull);
+        if (option === 'breeds') {
+          result += '.grid-item[data-' + option + '*="' + selectedOptions[option] + '"]';
 
-            }
-
-          } else {
-            return _.some([element], selected);
-
-          }
+        } else {
+          result += '.grid-item[data-' + option + '="' + selectedOptions[option] + '"]';
         }
 
       }
+
+    }
+
+    return result;
+
+  }
+
+
+
+
+
+
+
+
+
+  function constructSelectedOptions($items) {
+
+    var finalSelectedOptions;
+
+    $items.forEach( function(itemElem) {
+
+      var $itemElem = jQuery(itemElem)[0];
+
+      var element = {
+        type: $itemElem.dataset.type,
+        breeds: $itemElem.dataset.breeds,
+        size: $itemElem.dataset.size,
+        age: $itemElem.dataset.age
+      };
+
+      // Remove the null values ...
+      var selected = _.omitBy(selectedFilters, _.isNull);
+
+      if (selected.breeds) {
+
+
+
+        if (selected.breeds.length > 3) {
+
+          console.log("Greater than 3! ", selected.breeds);
+
+          // var elementWithoutBreeds = {
+          //   type: element.type,
+          //   age: element.age,
+          //   size: element.size
+          // };
+
+          var selectedWithoutBreeds = {
+            type: selectedFilters.type,
+            age: selectedFilters.age,
+            size: selectedFilters.size,
+            breeds: selected.breeds
+          };
+
+          console.log("zzzzzzz: ", selectedWithoutBreeds);
+
+          finalSelectedOptions = _.omitBy(selectedWithoutBreeds, _.isNull);
+
+          console.log("finalSelectedOptions: ", finalSelectedOptions);
+
+
+        }
+
+
+
+      } else {
+
+        finalSelectedOptions = selected;
+
+      }
+
+
+    });
+
+    console.log("finalSelectedOptions: ", finalSelectedOptions);
+
+    return finalSelectedOptions;
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //
+  // Filter Selection
+  //
+  const filterSelection = iso => {
+
+    iso.isotope({
+      itemSelector: '.grid-item',
+      percentPosition: true,
+      masonry: {
+        columnWidth: '.grid-item',
+        gutter: 2
+      },
+      filter: constructFilterClass( constructSelectedOptions( iso.isotope('getItemElements') ) )
+
     });
 
   };
@@ -227,10 +337,12 @@ const componentPetFinder = (() => {
   //
   // On filter clearing
   //
-  const onClear = (iso) => {
+  const onClear = iso => {
 
-    $buttonClear.click(() => {
+    $buttonClear.click( () => {
+
       clearFilters(iso);
+
     });
 
   };
@@ -239,9 +351,9 @@ const componentPetFinder = (() => {
   //
   // On Type change
   //
-  const onType = (iso) => {
+  const onType = iso => {
 
-    $inputType.change(() => {
+    $inputType.change( () => {
 
       setType();
       filterSelection(iso);
@@ -254,11 +366,11 @@ const componentPetFinder = (() => {
   //
   // On Breed change
   //
-  const onBreed = (iso) => {
+  const onBreed = iso => {
 
-    $inputBreeds.keyup(() => {
+    $inputBreeds.keyup( () => {
 
-      if($inputBreeds.val().length === 0) {
+      if ($inputBreeds.val().length === 0) {
         selectedFilters.breeds = null;
 
       } else {
@@ -276,9 +388,9 @@ const componentPetFinder = (() => {
   //
   // On Size change
   //
-  const onSize = (iso) => {
+  const onSize = iso => {
 
-    $inputSize.change(() => {
+    $inputSize.change( () => {
       selectedFilters.size = $inputSize.val();
       filterSelection(iso);
     });
@@ -289,9 +401,9 @@ const componentPetFinder = (() => {
   //
   // On Age change
   //
-  const onAge = (iso) => {
+  const onAge = iso => {
 
-    $inputAge.change(() => {
+    $inputAge.change( () => {
       selectedFilters.age = $inputAge.val();
       filterSelection(iso);
     });
@@ -302,17 +414,20 @@ const componentPetFinder = (() => {
   //
   // On Finish
   //
-  const onFinish = (iso) => {
-    iso.on('arrangeComplete', function(filteredItems) {
+  const onFinish = iso => {
+
+    iso.on('arrangeComplete', function(event, filteredItems) {
+      console.log("filteredItems: ", filteredItems);
       checkForEmptyResults(filteredItems);
     });
+
   };
 
 
   //
   // Detect Filter Events
   //
-  const detectFilterEvents = (iso) => {
+  const detectFilterEvents = iso => {
 
     onType(iso);
     onBreed(iso);
@@ -327,16 +442,24 @@ const componentPetFinder = (() => {
   //
   // Check for empty results
   //
-  const checkForEmptyResults = (filteredItems) => {
-    if(filteredItems.length === 0) {
+  const checkForEmptyResults = filteredItems => {
+
+    console.log("length: ", filteredItems.length);
+
+    if (filteredItems.length === 0) {
+
       $gridContainer.addClass('is-empty');
 
     } else {
-      if($gridContainer.hasClass('is-empty')) {
+
+      if ($gridContainer.hasClass('is-empty')) {
         $gridContainer.removeClass('is-empty');
       }
+
     }
+
   };
+
 
   return {
     loadPets: loadPets

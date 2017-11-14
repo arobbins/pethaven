@@ -1,7 +1,7 @@
 jQuery(function($) {
 	$("#tpo-the-list").sortable();
 	$(".reverse").click(function(){
-		var list = $('#the-list');
+		var list = $('#tpo-the-list');
 		var listItems = list.children('li');
 		list.append(listItems.get().reverse());
 	});

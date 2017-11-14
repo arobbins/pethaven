@@ -24,6 +24,11 @@
           get_template_part('components/pet-finder/view');
         endif;
 
+        // Generic
+        if(get_row_layout() == 'components_generic'):
+          get_template_part('components/generic/controller');
+        endif;
+
       endwhile;
     endif;
 

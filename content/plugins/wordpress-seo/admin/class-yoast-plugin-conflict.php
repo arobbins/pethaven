@@ -115,7 +115,7 @@ class Yoast_Plugin_Conflict {
 	 */
 	public function get_conflicting_plugins_as_string( $plugin_section ) {
 		if ( ! function_exists( 'get_plugin_data' ) ) {
-			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
 		// Getting the active plugins by given section.
@@ -199,7 +199,7 @@ class Yoast_Plugin_Conflict {
 			$error_message .= '<p>' . sprintf( $readable_plugin_section, 'Yoast SEO', $plugin_name ) . '</p>';
 
 			/* translators: %s: 'Facebook' plugin name of possibly conflicting plugin */
-			$error_message .= '<a target="_blank" class="button-primary" href="' . wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . $plugin_file . '&amp;plugin_status=all', 'deactivate-plugin_' . $plugin_file ) . '">' . sprintf( __( 'Deactivate %s', 'wordpress-seo' ), WPSEO_Utils::get_plugin_name( $plugin_file ) ) . '</a> ';
+			$error_message .= '<a class="button button-primary" href="' . wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . $plugin_file . '&amp;plugin_status=all', 'deactivate-plugin_' . $plugin_file ) . '">' . sprintf( __( 'Deactivate %s', 'wordpress-seo' ), WPSEO_Utils::get_plugin_name( $plugin_file ) ) . '</a> ';
 
 			$identifier = $this->get_notification_identifier( $plugin_file );
 

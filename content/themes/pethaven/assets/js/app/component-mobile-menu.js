@@ -1,14 +1,14 @@
-import $ from 'jquery';
 import Slideout from 'slideout';
 
 const componentMobileMenu = (function() {
 
-  var $menu = $('.nav-mobile'),
-      $menuIcon = $('.toggle-button'),
-      $menuContainer = $('.menu-mobile-navigation-container'),
-      $slideoutPanel = $('.slideout-panel');
+  var $menu = jQuery('.nav-mobile'),
+      $menuIcon = jQuery('.toggle-button'),
+      $menuContainer = jQuery('.menu-mobile-navigation-container'),
+      $slideoutPanel = jQuery('.slideout-panel');
 
   const showMobileMenu = () => {
+
     $menuContainer.fadeIn('slow');
 
     $menuIcon.click(function(e) {
@@ -22,15 +22,18 @@ const componentMobileMenu = (function() {
 
       }
 
-      $(this).toggleClass("is-active");
+      jQuery(this).toggleClass("is-active");
 
     });
+
   };
 
   const toggleMenu = (menu) => {
+
     $menuIcon.click(function() {
       menu.toggle();
     });
+
   };
 
   const init = () => {

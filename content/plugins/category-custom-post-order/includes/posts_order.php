@@ -110,6 +110,7 @@ class Posts_Order {
 			'id' 		=> __('ID', 'cps'),
 			'author' 	=> __('Author', 'cps'),
 			'slug' 		=> __('Slug', 'cps'),
+			'menu_order'=> __('Menu Order', 'cps'),
 			'postmeta' 	=> __('Custom Field', 'cps')
 		);
 		// apply filters to add new order fields
@@ -152,6 +153,7 @@ class Posts_Order {
 			case 'id': $order_by = 'ID'; break;
 			case 'author': $order_by = 'post_author'; break;
 			case 'slug': $order_by = 'post_name'; break;
+			case 'menu_order': $order_by = 'menu_order'; break;
 			default: $order_by = 'post_date'; $order = 'DESC'; break;
 		}
 		return $order_by;
@@ -248,7 +250,7 @@ class Posts_Order {
 		if( !$this->term_id OR !$this->taxonomy ) return $clauses;
 		$clauses['join'] .= "LEFT JOIN ".$this->db->postmeta." sort ON (".$this->db->posts.".ID = sort.post_id AND sort.meta_key = '_sort_".$this->term_id."')";
 		$clauses['where'] .= "AND ( sort.meta_key = '_sort_".$this->term_id."' OR sort.post_id IS NULL )";
-		$clauses['orderby'] = "CAST(sort.meta_value AS SIGNED), ".$this->db->posts.".post_date ASC";
+		$clauses['orderby'] = "CAST(sort.meta_value AS SIGNED), ".$this->db->posts.".post_date DESC";
 		return $clauses;
 	}
 	
@@ -258,7 +260,7 @@ class Posts_Order {
 	* @since 1.4
 	*/
 	public function admin_menu() {
-		$page_hook_suffix = add_submenu_page( null, __('Order posts', 'post-sorter'), __('Order posts', 'post-sorter'), 'manage_options', 'sort-page', array( $this, 'admin_page' ), 0 );
+		$page_hook_suffix = add_submenu_page( null, __('Order posts', 'post-sorter'), __('Order posts', 'post-sorter'), 'edit_posts', 'sort-page', array( $this, 'admin_page' ), 0 );
 	}
 	
 	/**
@@ -329,9 +331,9 @@ class Posts_Order {
 					<?php endif; ?>
 				</ul>
 				<p class="submit" style="margin-top: 0;">
-					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Reorder', 'cps'); ?>"  />
+					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Save', 'cps'); ?>"  />
 					<?php if( $order ): ?>
-					<input type="submit" name="remove" id="submit" class="button button-secondary" value="<?php _e('Remove order', 'cps'); ?>"  />
+					<input type="submit" name="remove" id="submit" class="button button-secondary" value="<?php _e('Reset order', 'cps'); ?>"  />
 					<?php endif; ?>
 					<input type="button" name="reverse" id="reverse" class="reverse button button-secondary" value="<?php _e('Reverse', 'cps'); ?>"  />
 				</p>

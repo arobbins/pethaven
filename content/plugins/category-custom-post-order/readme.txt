@@ -3,8 +3,8 @@ Contributors: potreb
 Tags: posts order, custom post order, post order, category post order, taxonomy post order, order posts by category
 Donate link: http://schronisko.info.pl/kontakt-schronisko/numer-konta
 Requires at least: 4.4
-Tested up to: 4.4.1
-Stable tag: 1.4.3
+Tested up to: 4.6.2
+Stable tag: 1.4.4
 License: GPL2
 License URI: https://wordpress.org/about/gpl/
 
@@ -23,6 +23,11 @@ You can order yours post by date, modyfication date, title, id, author, slug, po
 3. Go to posts category and choose category to ordering and save results
 
 == Changelog ==
+= 1.4.4 =
+* Allowing to order by editor
+* Add order by menu_order field
+* Repair some bugs
+
 = 1.4.3 =
 * Repair some bugs
 * Add global order for homepage and categories

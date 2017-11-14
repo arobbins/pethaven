@@ -1,18 +1,18 @@
-import $ from 'jquery';
-import slick from 'slick-carousel';
-
 const Vendor = (function() {
 
-  let $marquees = $('.component-marquees');
+  function initCarousel() {
+    jQuery('.component-marquees').slick();
+  }
 
-  let initCarousel = function() {
-    $marquees.slick();
-    $marquees.on('breakpoint', function(event, slick, currentSlide, nextSlide){});
-  };
+  function initFitvid() {
+    jQuery(".component, .content").fitVids();
+  }
 
   return {
-    initCarousel: initCarousel
+    initCarousel: initCarousel,
+    initFitvid: initFitvid
   };
+
 
 })();
 

@@ -18,7 +18,6 @@
  * @package WordPress
  */
 
-
 // Staging
 // define('DB_NAME', 'lindsi_pethaven');
 // define('DB_USER', 'lindsi_andrew');
@@ -28,8 +27,8 @@
 // Local
 define('DB_NAME', 'pethaven');
 define('DB_USER', 'root');
-define('DB_PASSWORD', 'qp05ofilterZ!@');
-define('DB_HOST', 'localhost');
+define('DB_PASSWORD', 'qp05ofilterZ!)@(#*$&%6');
+define('DB_HOST', '127.0.0.1');
 
 
 /** Database Charset to use in creating database tables. */
@@ -80,8 +79,11 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
-define('SCRIPT_DEBUG', true);
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
+define('WP_DEBUG_DISPLAY', false); // Turn on for debugging
+define('WP_MEMORY_LIMIT', '256M');
+
 
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
 

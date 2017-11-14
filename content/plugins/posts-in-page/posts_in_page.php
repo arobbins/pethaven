@@ -1,43 +1,35 @@
 <?php
-
 /**
  *  Plugin Name: Posts in Page
- *  Plugin URI: http://www.ivycat.com/wordpress/wordpress-plugins/posts-in-page/
+ *  Plugin URI: https://ivycat.com/wordpress/wordpress-plugins/posts-in-page/
  *  Description: Easily add one or more posts to any page using simple shortcodes. Supports categories, tags, custom post types, custom taxonomies, and more.
- *  Author: IvyCat Web Services
- *  Author URI: http://www.ivycat.com
- *  version: 1.2.4
+ *  Version: 1.3.0
+ *  Author: IvyCat, Inc.
+ *  Author URI: https://ivycat.com
  *  License: GNU General Public License v2.0
  *  License URI: http://www.gnu.org/licenses/gpl-2.0.html
- *
- * ------------------------------------------------------------------------
- *	IvyCat Posts in Page, Copyright 2012 - 2015 IvyCat, Inc. (wp@ivycat.com)
- *
- *	This program is free software; you can redistribute it and/or modify
- *	it under the terms of the GNU General Public License as published by
- *	the Free Software Foundation; either version 2 of the License, or
- *	(at your option) any later version.
- *
- *	This program is distributed in the hope that it will be useful,
- *	but WITHOUT ANY WARRANTY; without even the implied warranty of
- *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *	GNU General Public License for more details.
- *
- *	You should have received a copy of the GNU General Public License
- *	along with this program; if not, write to the Free Software
- *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *  Text Domain: posts-in-page
+ *  Domain Path: /languages
+ *  
+ * @package Posts_in_Page
+ * @author Eric Amundson <eric@ivycat.com>
+ * @copyright Copyright (c) 2017, IvyCat, Inc.
+ * @license http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-if ( !function_exists( 'add_action' ) )
+if ( ! function_exists( 'add_action' ) ) {
 	wp_die( 'You are trying to access this file in a manner not allowed.', 'Direct Access Forbidden', array( 'response' => '403' ) );
+}
 
-if ( ! defined( 'POSTSPAGE_DIR' ) )
+if ( ! defined( 'POSTSPAGE_DIR' ) ) {
 	define( 'POSTSPAGE_DIR', plugin_dir_path( __FILE__ ) );
+}
 
-if ( ! defined( 'POSTPAGE_URL' ) )
+if ( ! defined( 'POSTPAGE_URL' ) ) {
 	define( 'POSTPAGE_URL', plugin_dir_url( __FILE__ ) );
+}
 
-require_once 'lib/page_posts.php';
+require_once 'includes/class-page-posts.php';
 
 class ICAddPostsToPage {
 
@@ -45,15 +37,17 @@ class ICAddPostsToPage {
 		add_shortcode( 'ic_add_posts', array( &$this, 'posts_in_page' ) );
 		add_shortcode( 'ic_add_post', array( &$this, 'post_in_page' ) );
 		add_action( 'admin_menu', array( &$this, 'plugin_page_init' ) );
-		add_filter( 'plugin_action_links_'. plugin_basename( __FILE__ ), array( &$this, 'plugin_action_links' ), 10, 4 );
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( &$this, 'plugin_action_links' ), 10, 4 );
+		load_plugin_textdomain( 'posts-in-page', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 
 	/**
 	 * 	Add settings link on plugins page.
 	 */
 	public function plugin_action_links( $actions, $plugin_file, $plugin_data, $context ) {
-		if ( is_plugin_active( $plugin_file ) )
-			$actions[] = '<a href="' . admin_url('options-general.php?page=posts_in_page') . '">' . __( ' Help', 'posts_in_page' ) . '</a>';
+		if ( is_plugin_active( $plugin_file ) ) {
+					$actions[] = '<a href="' . admin_url( 'options-general.php?page=posts_in_page' ) . '">' . __( ' Help', 'posts-in-page' ) . '</a>';
+		}
 		return apply_filters( 'post_in_page_actions', $actions );
 	}
 
@@ -80,11 +74,12 @@ class ICAddPostsToPage {
 	 *  Init plugin, add menu page, and setup hooks to load assets on the plugin options page
 	 */
 	public function plugin_page_init() {
-		if ( ! current_user_can( 'administrator' ) )
-			return;
+		if ( ! current_user_can( 'administrator' ) ) {
+					return;
+		}
 
 		$hooks = array( );
-		$hooks[] = add_options_page( __( 'Posts In Page' ), __( 'Posts In Page' ), 'read', 'posts_in_page', 
+		$hooks[] = add_options_page( __( 'Posts in Page', 'posts-in-page' ), __( 'Posts in Page', 'posts-in-page' ), 'read', 'posts_in_page', 
 			array( $this, 'plugin_page' ) );
 
 		foreach ( $hooks as $hook ) {
@@ -96,15 +91,15 @@ class ICAddPostsToPage {
 	 * Enqueue plugin assets (scripts & styles)
 	 */
 	public function load_assets( ) {
-		wp_enqueue_style( 'postpagestyle', POSTPAGE_URL. '/assets/post-page_styles.css' );
-		wp_enqueue_script( 'postpagescript', POSTPAGE_URL. '/assets/post-page_scripts.js' );
+		wp_enqueue_style( 'postpagestyle', POSTPAGE_URL . 'admin/assets/css/post-page_styles.css' );
+		wp_enqueue_script( 'postpagescript', POSTPAGE_URL . 'admin/assets/js/post-page_scripts.js' );
 	}
 
 	/**
 	 * Plugin Settings page - includes view for the page
 	 */
 	public function plugin_page( ) {
-		require_once 'assets/posts_in_page_help_view.php';
+		require_once 'admin/views/help-main.php';
 	}
 
 }

@@ -24,7 +24,8 @@ class Post_Order_Settings
 				'title' 	=> __('Title', 'cps'),
 				'id' 		=> __('ID', 'cps'),
 				'author' 	=> __('Author', 'cps'),
-				'slug' 		=> __('Slug', 'cps')
+				'slug' 		=> __('Slug', 'cps'),
+				'menu_order' 		=> __('Menu order', 'cps')
 			)
 		);
 		

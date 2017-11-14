@@ -86,7 +86,7 @@
 .menu-item {
   position: relative;
 
-  a:not(.btn) {
+  > a {
     color: color(primary);
     text-decoration: none;
     padding: 15px 20px;
@@ -101,7 +101,7 @@
   }
 
   &:last-child {
-    a:not(.btn) {
+    > a {
       padding-right: 0;
     }
   }
@@ -131,9 +131,18 @@
     top: 0;
   }
 
+  a {
+    color: white;
+
+    &:hover {
+      color: color(primary);
+    }
+
+  }
+
   @include shadow-subtle;
 
-  a:not(.btn) {
+  > a {
     display: inline-block;
     width: 100%;
     color: white;

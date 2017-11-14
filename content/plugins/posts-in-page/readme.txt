@@ -1,10 +1,9 @@
 === Posts in Page ===
-Contributors: sewmyheadon, ivycat, gehidore, dgilfoy
-Donate link: http://www.ivycat.com/contribute/
-Tags: shortcode, pages, posts, custom post types
+Contributors: ivycat, sewmyheadon, anvilzephyr, jasonm4563, pjackson1972
+Tags: shortcode, pages, posts, custom post types, taxonomy, terms
 Requires at least: 3.0
-Tested up to: 4.1.1
-Stable tag: 1.2.4
+Tested up to: 4.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +19,7 @@ You can get all of the same functionality provided by this plugin by modifying y
 
 Plugin is depending upon your theme's styling; version 1.x of this plugin _does not_ contain native styles. 
 
-This is a minimal plugin, function over form.  If you would like to extend it, or would like us to extend it in later versions, please post feature suggestions in the plugin's [support forum](http://wordpress.org/support/plugin/posts-in-page) or [contact us](http://www.ivycat.com/contact/).
+This is a minimal plugin, function over form.  If you would like to extend it, or would like us to extend it in later versions, please post feature suggestions in the plugin's [support forum](https://wordpress.org/support/plugin/posts-in-page) or [contact us](https://ivycat.com/contact/).
 
 Give us feedback and contribute to this plugin on its [GitHub page](https://github.com/ivycat/Posts-in-Page)
 
@@ -54,6 +53,8 @@ To 'pull' posts into a page, you can either:
 * `[ic_add_posts template='template-in-theme-dir.php']` - In case you want to style your markup, add meta data, etc.  Each shortcode can reference a different template.  These templates must exist in the theme directory.
 * `[ic_add_posts ignore_sticky_posts='no']` - Show sticky posts too (they're ignored by default).
 * `[ic_add_posts paginate='yes']` - use pagination links (off by default)
+* `[ic_add_posts label_next='Next' label_previous='Previous']` - Customize 'Next' and 'Previous' labels used by pagination
+* `[ic_add_posts post_status='private']` - Show posts with the specified status. By default it shows only posts with 'publish' status. To select multiple statuses, separate them with commas like so: `post_status='private,publish'`.
 
 Or any combination of the above.
 
@@ -119,7 +120,7 @@ You bet.
 
 = Will it make me coffee?
 
-Not likely, but let us know if it does; then we'll know we have something special.
+Not likely, but let us know if it does; then we'll *know* we have something special.
 
 == Screenshots ==
 
@@ -127,6 +128,12 @@ Not likely, but let us know if it does; then we'll know we have something specia
 2. Embed shortcodes directly in your template using `do_shortcode`.
 
 == Changelog ==
+
+= 1.3.0 =
+* File reorganization / housekeeping
+* Admin UI cleanup
+* Security: Fixed [directory traversal vulnerability](https://www.pluginvulnerabilities.com/2017/02/13/authenticated-local-file-inclusion-lfi-vulnerability-in-posts-in-page/).
+* Added ability to optionally include private posts - Thanks StarsoftAnalysis!
 
 = 1.2.4 = 
 * now you can set `more_tag=""` to remove the `[...] &hellip;` that unfortunetly shows up as `&hellip`
@@ -176,6 +183,9 @@ Not likely, but let us know if it does; then we'll know we have something specia
 * Added single post or specific post capabilities.
 
 == Upgrade Notice ==
+
+= 1.3.0 = 
+* Important security and version updates. Please upgrade.
 
 = 1.2.4 = 
 * Presentational fixes: clean up whitespace, extra tabs, add in customization of more tag.

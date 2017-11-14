@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Rx from 'rx';
 
 const PF = (function() {
@@ -10,7 +9,7 @@ const PF = (function() {
   let APIkey = '454b72d5b9fc8fca72c7a461a5ac46d2';
   let format = 'json';
 
-  let $container = $('.component-pet-finder');
+  let $container = jQuery('.component-pet-finder');
 
 
   //
@@ -21,14 +20,14 @@ const PF = (function() {
     var animalType = $container.data("animal-type"),
         url = endpoint + methodBreedList + '?key=' + APIkey + '&animal=' + animalType + '&format=' + format + '&callback=?';
 
-    return $.ajax({
+    return jQuery.ajax({
       url: url,
       dataType: 'jsonp',
       beforeSend: function(xhr) {
-        // $('.component-pet-finder .spinner').removeClass('is-hidden');
+        // jQuery('.component-pet-finder .spinner').removeClass('is-hidden');
       },
       success: function () {
-        // $('.component-pet-finder .spinner').addClass('is-hidden');
+        // jQuery('.component-pet-finder .spinner').addClass('is-hidden');
       }
     }).promise();
 
@@ -42,14 +41,14 @@ const PF = (function() {
 
     var url = endpoint + methodFindPets + '?key=' + APIkey + '&id=' + shelterID + '&count=1000' + '&format=' + format + '&callback=?';
 
-    return $.ajax({
+    return jQuery.ajax({
       url: url,
       dataType: 'jsonp',
       beforeSend: function( xhr ) {
-        $('.component-pet-finder .spinner').removeClass('is-hidden');
+        jQuery('.component-pet-finder .spinner').removeClass('is-hidden');
       },
       success: function () {
-        $('.component-pet-finder .spinner').addClass('is-hidden');
+        
       }
     }).promise();
 

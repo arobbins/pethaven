@@ -11,14 +11,11 @@
     text-transform: capitalize;
   }
 
-  .menu-item a:not(.btn) {
+  .menu-item > a {
     padding-left: 0;
     width: 100%;
     display: block;
     color: color(highlight);
-  }
-
-  .menu-item a:not(.btn) {
     padding: 0.4em 1em 0.4em 0;
   }
 
