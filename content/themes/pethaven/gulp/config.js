@@ -14,7 +14,8 @@ const config = {
     ],
     jsEntry: './assets/js/app/app.js', // Entry file
     css: './assets/css/**/*.scss',
-    cssEntry: './assets/css/app/app.scss'
+    cssEntry: './assets/css/app/app.scss',
+    cssAdminEntry: './assets/css/app/base/admin.scss'
   },
   favicon: {
     entry: './assets/imgs/favicons/favicon.png',
@@ -28,7 +29,8 @@ const config = {
   names: {
     jsVendor: 'vendor.min.js',
     js: 'app.min.js',
-    css: 'app.min.css'
+    css: 'app.min.css',
+    cssAdmin: 'admin.min.css'
   },
   libs: [
     'jquery',

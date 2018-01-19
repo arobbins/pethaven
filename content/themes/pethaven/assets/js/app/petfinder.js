@@ -40,15 +40,16 @@ const PF = (function() {
   const getPets = function() {
 
     var url = endpoint + methodFindPets + '?key=' + APIkey + '&id=' + shelterID + '&count=1000' + '&format=' + format + '&callback=?';
-
+console.log("url: ", url);
     return jQuery.ajax({
       url: url,
       dataType: 'jsonp',
       beforeSend: function( xhr ) {
         jQuery('.component-pet-finder .spinner').removeClass('is-hidden');
+        console.log("url: ", url);
       },
       success: function () {
-        
+
       }
     }).promise();
 

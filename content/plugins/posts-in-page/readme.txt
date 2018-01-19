@@ -1,9 +1,9 @@
 === Posts in Page ===
 Contributors: ivycat, sewmyheadon, anvilzephyr, jasonm4563, pjackson1972
 Tags: shortcode, pages, posts, custom post types, taxonomy, terms
-Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.3.0
+Requires at least: 4.0
+Tested up to: 4.9
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,7 @@ To 'pull' posts into a page, you can either:
 * `[ic_add_posts showposts='5']` - limit number of posts (or override default setting)
 * `[ic_add_posts orderby='title' order='ASC']` - orderby title - supports all WP orderby variables.  Order is optional, WP default is 'DESC'.
 * `[ic_add_posts category='category-slug']` - Show posts within a specific category.  Uses slugs, can have multiple but separate by commas. 	 category-1,category2, etc (no spaces.)
-* `[ic_add_posts exclude_category='category-slug']` - Exclude posts within specific category. Uses slugs, can have multiple slugs seperated by commas.      category-1,category2, etc (no spaces.)
+* `[ic_add_posts exclude_category='category-slug']` - Exclude posts within specific category. Uses slugs, can have multiple slugs separated by commas.      category-1,category2, etc (no spaces.)
 * `[ic_add_posts tag='tag-slug']`  - Show posts using a specific tag.  Like categories, it uses slugs, and can accommodate multiple tags separate by commas. 	 tag-1,tag-2, etc (no spaces.)
 * `[ic_add_posts tax='taxonomy' term='term']` - limit posts to those that exist in a taxonomy and have a specific term.  Both are required for either one to work
 * `[ic_add_posts template='template-in-theme-dir.php']` - In case you want to style your markup, add meta data, etc.  Each shortcode can reference a different template.  These templates must exist in the theme directory.
@@ -129,6 +129,9 @@ Not likely, but let us know if it does; then we'll *know* we have something spec
 
 == Changelog ==
 
+= 1.3.1 =
+* File header update / spelling fixes in readme.txt
+
 = 1.3.0 =
 * File reorganization / housekeeping
 * Admin UI cleanup
@@ -136,7 +139,7 @@ Not likely, but let us know if it does; then we'll *know* we have something spec
 * Added ability to optionally include private posts - Thanks StarsoftAnalysis!
 
 = 1.2.4 = 
-* now you can set `more_tag=""` to remove the `[...] &hellip;` that unfortunetly shows up as `&hellip`
+* now you can set `more_tag=""` to remove the `[...] &hellip;` that unfortunately shows up as `&hellip`
 
 = 1.2.3 = 
 * Added minor doc tweaks.

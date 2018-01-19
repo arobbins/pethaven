@@ -98,19 +98,12 @@ function display_sidebar() {
 }
 
 
-/**
- * Theme assets
- */
+/*
+
+Theme assets
+
+*/
 function assets() {
-
-  /* Removing jQuery */
-  if(!is_admin()) {
-
-    // if(is_page_template('template-fullwidth-without-jquery.php')) {
-    //   wp_deregister_script('jquery');
-    // }
-
-	}
 
   /* Comments */
   if (is_single() && comments_open() && get_option('thread_comments')) {
@@ -133,7 +126,7 @@ function assets() {
     wp_enqueue_script('js-fitvid', '//cdnjs.cloudflare.com/ajax/libs/fitvids/1.2.0/jquery.fitvids.min.js', [], null, true);
     wp_enqueue_script('modernizr', Assets\asset_path('assets/js/vendor/modernizr-custom.js'), [], null, true);
     wp_enqueue_script('js-vendor', Assets\asset_path('assets/js/vendor.min.js'), [], null, true);
-    wp_enqueue_script('js', Assets\asset_path('assets/js/app.min.js'), ['js-fitvid', 'modernizr', 'js-vendor', 'js-slick', 'js-isotope', 'js-imagesloaded'], null, true);
+    wp_enqueue_script('js', Assets\asset_path('assets/js/app.min.js?ver=123'), ['js-fitvid', 'modernizr', 'js-vendor', 'js-slick', 'js-isotope', 'js-imagesloaded'], null, true);
 
   }
 
@@ -141,6 +134,15 @@ function assets() {
 }
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+
+
+function wpdocs_theme_add_editor_styles() {
+  add_editor_style( Assets\asset_path('assets/css/admin.min.css') );
+}
+add_action( 'admin_init', __NAMESPACE__ . '\\wpdocs_theme_add_editor_styles' );
+
+
 
 
 //

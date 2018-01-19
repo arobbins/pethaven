@@ -35,10 +35,9 @@ const componentPetFinder = (() => {
 
         pets => {
 
+          console.log("pets.petfinder.pets: ", pets);
+
           insertPetsIntoDOM(pets.petfinder.pets.pet);
-
-
-
 
           $grid.imagesLoaded( function() {
 
@@ -52,29 +51,10 @@ const componentPetFinder = (() => {
 
           });
 
-
-
-          // new imagesloaded('.component-pet-finder-grid', () => {
-          //
-          //   jQuery('.component-pet-finder .spinner').addClass('is-hidden');
-          //
-          //   console.log("Images loaded ...");
-          //
-          //   if (!$grid.hasClass('is-visible')) {
-          //     $grid.addClass('is-visible');
-          //   }
-          //
-          //   initGrid();
-          //
-          // });
-
-
-
-
         },
 
         error => {
-          console.log("Error: ", error);
+          console.error("Error: ", error);
         }
 
       );
@@ -256,17 +236,7 @@ const componentPetFinder = (() => {
 
       if (selected.breeds) {
 
-
-
         if (selected.breeds.length > 3) {
-
-          console.log("Greater than 3! ", selected.breeds);
-
-          // var elementWithoutBreeds = {
-          //   type: element.type,
-          //   age: element.age,
-          //   size: element.size
-          // };
 
           var selectedWithoutBreeds = {
             type: selectedFilters.type,
@@ -275,16 +245,9 @@ const componentPetFinder = (() => {
             breeds: selected.breeds
           };
 
-          console.log("zzzzzzz: ", selectedWithoutBreeds);
-
           finalSelectedOptions = _.omitBy(selectedWithoutBreeds, _.isNull);
 
-          console.log("finalSelectedOptions: ", finalSelectedOptions);
-
-
         }
-
-
 
       } else {
 
@@ -292,10 +255,7 @@ const componentPetFinder = (() => {
 
       }
 
-
     });
-
-    console.log("finalSelectedOptions: ", finalSelectedOptions);
 
     return finalSelectedOptions;
 
@@ -416,10 +376,17 @@ const componentPetFinder = (() => {
   //
   const onFinish = iso => {
 
-    iso.on('arrangeComplete', function(event, filteredItems) {
-      console.log("filteredItems: ", filteredItems);
+    iso.isotope( 'on', 'arrangeComplete', function(filteredItems) {
       checkForEmptyResults(filteredItems);
     });
+
+    // manually trigger initial layout
+    // iso.isotope();
+
+
+    // iso.on('arrangeComplete', function(event, filteredItems) {
+    //   checkForEmptyResults(filteredItems);
+    // });
 
   };
 
@@ -443,8 +410,6 @@ const componentPetFinder = (() => {
   // Check for empty results
   //
   const checkForEmptyResults = filteredItems => {
-
-    console.log("length: ", filteredItems.length);
 
     if (filteredItems.length === 0) {
 

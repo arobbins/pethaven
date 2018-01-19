@@ -19,3 +19,14 @@ gulp.task('css', () => {
     .pipe(gulp.dest(config.folders.css))
     .pipe(config.bs.stream());
 });
+
+gulp.task('cssAdmin', () => {
+  return gulp.src(config.files.cssAdminEntry)
+    .pipe(sourcemaps.init())
+      .pipe(sass())
+      .pipe(pleeease())
+      .pipe(rename(config.names.cssAdmin))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(config.folders.css))
+    .pipe(config.bs.stream());
+});
